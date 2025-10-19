@@ -1,0 +1,194 @@
+<main>
+  <section class="section section-shaped section-lg">
+    <!-- <div class="shape shape-style-1 bg-gradient-default"> -->
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header" style="background-color: #b3b3ff">
+              <div class="text-muted text-center mb-3">
+                <!-- <i class="ni ni-single-02"></i> &nbsp;              -->
+                <strong style="color: #000000">Sign in</strong>
+              </div>
+              <!-- <div class="btn-wrapper text-center">
+                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">                
+                    <img src="./assets/img/icons/common/Facebook_icon_2013.svg.png">
+                  </span>
+                  <span class="btn-inner--text">facebook</span>
+                </a>
+                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/google.svg">
+                  </span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div> -->
+            </div>
+            <div
+              class="card-body px-lg-5 py-lg-5"
+              style="background-color: #fff"
+            >
+              <!-- <div class="text-center text-muted mb-4">
+                <small>Or sign in with credentials</small>
+              </div> -->
+              <form
+                role="form"
+                [formGroup]="registerForm"
+                (ngSubmit)="onSubmit()"
+              >
+                <div
+                  class="form-group mb-3"
+                  [ngClass]="{ focused: focus === true }"
+                >
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="ni ni-mobile-button"></i
+                      ></span>
+                    </div>
+                    <input
+                      class="form-control"
+                      formControlName="MobileNo"
+                      placeholder="Mobile No."
+                      type="text"
+                      maxlength="20"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                      [ngClass]="{
+                        'is-invalid': submitted && f.MobileNo.errors
+                      }"
+                    />
+                    <div
+                      *ngIf="submitted && f.MobileNo.errors"
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="f.MobileNo.errors.required">
+                        Mobile Number is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button
+                    class="btn btn-primary my-4"
+                    *ngIf="OTPSent"
+                    (click)="onContinue()"
+                  >
+                    Continue
+                  </button>
+                  <button
+                    class="btn btn-primary my-4"
+                    style="background: #fff; color: black; text-transform: none"
+                    *ngIf="GoogleLogin"
+                    (click)="onGoogleLogIn()"
+                  >
+                    <img
+                      width="20px"
+                      style="margin-right: 5px"
+                      alt="Google sign-in"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+                    />
+                    Login
+                  </button>
+                  <!-- <a class="btn btn-outline-dark" *ngIf="GoogleLogin" href="/users/googleauth" role="button" style="text-transform:none">
+                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                    Google Sign-in
+                  </a> -->
+                </div>
+                <div id="divLogIn" *ngIf="Continue">
+                  <div
+                    class="form-group"
+                    [ngClass]="{ focused: focus1 === true }"
+                  >
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="ni ni-lock-circle-open"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="password"
+                        formControlName="Password"
+                        placeholder="PIN"
+                        class="form-control"
+                        [ngClass]="{
+                          'is-invalid': submitted && f.Password.errors
+                        }"
+                      />
+                      <div
+                        *ngIf="submitted && f.Password.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="f.Password.errors.required">
+                          PIN is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="custom-control custom-control-alternative custom-checkbox"
+                  >
+                    <input
+                      class="custom-control-input"
+                      id="customCheckLogin"
+                      type="checkbox"
+                    />
+                    <label class="custom-control-label" for="customCheckLogin">
+                      <span>Remember me</span>
+                    </label>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-primary my-4">Sign in</button>
+                    <button
+                      class="btn btn-secondary"
+                      type="reset"
+                      (click)="onReset()"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  <div class="text-muted">
+                    <small>
+                      Did not get your verification code?
+                      <a [routerLink]="" (click)="reSendCode()"
+                        ><b>Click here</b></a
+                      >
+                      to resend.</small
+                    >
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <a href="javascript:void(0)" class="text-light">
+                <small>Forgot password?</small>
+              </a>
+            </div>
+            <div class="col-6 text-right">
+              <a
+                href="javascript:void(0)"
+                [routerLink]="['/register']"
+                class="text-light"
+              >
+                <small>Create new account</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,215 @@
+<main class="profile-page">
+  <section class="section-profile-cover section-shaped my-0">
+    <!-- Circles background -->
+    <div class="shape shape-style-1 shape-primary alpha-4">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="card card-profile shadow mt--300">
+        <div class="px-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2">
+              <div class="card-profile-image">
+                <a href="javascript:void(0)">
+                  <img src="./assets/img/theme/no_image.jpg" class="rounded-circle">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+              <div class="card-profile-actions py-4 mt-lg-0">
+                <a class="btn btn-sm btn-info mr-4" data-toggle="modal" data-target="#modal-form-update-profile">Update Profile</a>
+              </div>
+            </div>
+            <div class="col-lg-4 order-lg-1">
+              <div class="card-profile-stats d-flex justify-content-center">
+                <div>
+                  <span class="heading" style="color:blue;">{{FolderCount}}</span>
+                  <span class="description" style="color: black;">Folder(s)</span>
+                </div>
+                <div>
+                  <span class="heading" style="color:fuchsia;">{{FileCount}}</span>
+                  <span class="description" style="color: black;">File(s)</span>
+                </div>
+                <div>
+                  <span class="heading" style="color: green;">{{SmartRXCount}}</span>
+                  <span class="description" style="color: black;">Smart RX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="card-profile-stats d-flex justify-content-center">
+              <div data-toggle="modal" data-target="#modal-form-showRewardPoints" (click)="showRewardPointList()">
+                <span class="heading" style="color: rgb(128, 0, 107); font-size:x-large; font-weight: bold;">{{ActivityPoints}}</span>
+                <span class="description" style="color: black;">Activity Points</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-5">
+            <h3>{{UserFullName}}
+              <span class="font-weight-light"></span>
+            </h3>
+            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{EmailAddressText}}</div>
+            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{MobileNoText}}</div>
+            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{GenderText}}</div>
+            <div class="h6 mt-4 collapse"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer</div>
+            <div class="collapse"><i class="ni education_hat mr-2"></i>University of Computer Science</div>
+          </div>
+          <div class="mt-5 py-5 border-top text-center collapse">
+            <div class="row justify-content-center">
+              <div class="col-lg-9">
+                <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
+                <a href="javascript:void(0)">Show more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="col-md-4">
+  <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+  <div class="modal fade" id="modal-form-update-profile" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card bg-secondary shadow border-0 mb-0">
+            <div class="card-header pb-3" style="background-color: #b3b3ff">
+              <div class="text-muted text-center mb-3">
+                <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Update Info
+                </h3>
+              </div>
+            </div>
+            <div class="card-body px-lg-5 py-lg-5">
+              <form role="form">
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input class="form-control" [(ngModel)]="UserFullName" name="UserFullName" placeholder="Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                    <strong class="text-warning">*</strong>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">                    
+                      <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                    </div>                      
+                    <input class="form-control" [(ngModel)]="MobileNo" name="MobileNo" placeholder="Mobile No." type="text" (focus)="focus1=true" (blur)="focus1=false">
+                    <strong class="text-warning">*</strong>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">                    
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>                      
+                    <input class="form-control" [(ngModel)]="EmailAddress" name="EmailAddress" placeholder="Email Address" type="text" (focus)="focus1=true" (blur)="focus1=false">
+                    
+                  </div>
+                </div>
+                <!-- <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" [(ngModel)]="Password" name="Password" placeholder="Password" type="password" (focus)="focus2=true" (blur)="focus2=false">
+                  </div>
+                </div> -->
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-transgender"></i></span>
+                    </div>
+                    <select class="form-control" [(ngModel)]="Gender" name="Gender" id="Gender">
+                      <option value="" selected="selected">--Select Gender--</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Others">Others</option>
+                    </select>
+                    <strong class="text-warning">*</strong>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <select class="form-control" [(ngModel)]="MonthOfBirth" name="MonthOfBirth" id="MonthOfBirth">
+                      <option value="" selected="selected">--Select Month--</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                    <input class="form-control text-right" [(ngModel)]="YearOfBirth" name="YearOfBirth" placeholder=" Year of Birth" type="text" (focus)="focus2=true" (blur)="focus2=false">                    
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="button" class="btn btn-primary my-4" (click)="updateProfile()">Update</button>
+                  <button #closeModalTag type="button" id="BtnCloseModal" class="btn btn-danger my-4" data-dismiss="modal" (click)="basicModal.hide()">Close</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-form-showRewardPoints" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card bg-secondary mb-0">
+          <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+            <tbody>
+              <ng-container *ngFor="let items of activityReward">
+                <tr style="background: #fff;border-bottom:1pt solid black;">
+                  <td>
+                    <p style="font-size: small;"> Activity: &nbsp;<b>{{items.ActivityName}}</b></p>
+                    <p style="font-size: smaller;"> Date: &nbsp;<b>{{items.SetDate}}</b></p>
+                  </td>
+                  <td>
+                    <p style="font-size: small;"> Point: &nbsp;<b>{{items.ActivityPoint}}</b></p>
+                  </td>
+                </tr>
+              </ng-container>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="text-center">
+        <button #closeModalTag type="button" id="BtnCloseModal" class="btn btn-danger my-4" data-dismiss="modal" (click)="basicModal.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

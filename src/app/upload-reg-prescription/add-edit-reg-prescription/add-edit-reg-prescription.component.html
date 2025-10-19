@@ -1,0 +1,950 @@
+<style>
+  .progressbar {
+    counter-reset: step;
+  }
+
+  .progressbar li {
+    list-style: none;
+    display: inline-block;
+    width: 30.33%;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    font-size: small;
+  }
+
+  .progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid red;
+    border-radius: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    background-color: #fff;
+  }
+
+  .progressbar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
+
+  .progressbar li:first-child:after {
+    content: none;
+  }
+
+  .progressbar li.active {
+    color: green;
+  }
+
+  .progressbar li.active:before {
+    border-color: green;
+  }
+
+  .progressbar li.active+li:after {
+    background-color: green;
+  }
+
+  .floatReport {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+  }
+
+  .figure {
+    border: 1px solid;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+  }
+
+  .figcaption {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    background-color: yellow;
+    width: 100%;
+  }
+
+  .floatAdd {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+  }
+
+  #myDIV {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+    padding: 5px;
+    float: none !important;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  #myDIV div {
+    background: white;
+    text-align: center;
+    padding: 10px;
+    min-width: 150px;
+  }
+
+  .itemM {
+    float: left;
+  }
+
+  .notify-badge-red {
+    position: absolute;
+    right: -10px;
+    top: 0px;
+    background: red;
+    text-align: center;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    padding: 2px 2px;
+    font-size: 10px;
+  }
+
+  .notify-badge-green {
+    position: absolute;
+    right: -10px;
+    top: 0px;
+    background: green;
+    text-align: center;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    padding: 2px 2px;
+    font-size: 10px;
+  }
+</style>
+
+<div class="row justify-content-center">
+  <div class="col-lg-12">
+    <div class="card-header pb-2" style="background-color: #c0c0c0;">
+      <div class="text-muted text-center mb-3">
+        <h3 class="h6 font-weight-bold" style="color: rgb(51, 51, 51);">Your Uploads <i class="fa fa-search"
+            style="float: right;" data-toggle="modal" data-target="#modal-form-ViewAll" data-backdrop="static"
+            data-keyboard="false"></i></h3>
+    
+      </div>
+    </div>
+    
+    <p style="color: darkslategray; font-size: small; font-weight: bold;padding-left: 10px;padding-top: 10px;">Your Folders
+    </p>
+    
+    <div id="myDIV">
+      <div class="itemM" *ngFor="let items of folderList">
+        <i class="fa fa-folder fa-lg" style="color: rgba(255, 174, 0, 0.938);float: left;"></i>&nbsp;&nbsp;
+        <a [routerLink]="['/showRxList',localencryption(items.FolderID)]"
+          style="font-size: small; font-weight: bold;float: left;padding-left: 10px;">
+          {{items.FolderName}}
+        </a>&nbsp;&nbsp;
+    
+        <ul class="navbar-nav navbar-nav-hover" style="float: right;">
+          <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a data-toggle="dropdown" role="button">
+              <i class="fa fa-ellipsis-v" style="color: rgba(0, 174, 255, 0.938);"></i>
+            </a>
+            <div class="dropdown-menu" style="position:fixed;text-align:left;">
+              <a [routerLink]="" data-toggle="modal" data-target="#modal-form-edit" data-backdrop="static"
+                data-keyboard="false" (click)="onEditFolderClick(items)" class="dropdown-item"><span class="btn-inner--icon"
+                  style="color: blue;"><i class="fa fa-edit"></i></span>&nbsp;Rename</a>
+              <a [routerLink]="" data-backdrop="static" data-keyboard="false" (click)="deleteFolder(items)"
+                class="dropdown-item"><span class="btn-inner--icon" style="color: red;"><i
+                    class="fa fa-times"></i></span>&nbsp;Delete</a>
+            </div>
+          </li>
+        </ul>
+    
+      </div>
+    </div>
+    
+    <p style="color: darkslategray; font-size: small; font-weight: bold;padding-left: 10px;padding-top: 10px;"
+      *ngIf="this.IsDirectFileAvailable">Your Files</p>
+    
+    <div id="myDIV">
+      <div class="itemM" *ngFor="let items of directfileList">
+        <figure class="fig">
+
+          <ul class="navbar-nav navbar-nav-hover" style="float: left;">
+            <li class="nav-item dropdown">
+              <a style="float: left;position: relative;" title="items.Caption" data-toggle="dropdown" role="button">
+                <span class="notify-badge-red" *ngIf="!items.IsSmartRxExists">File Only</span>
+                <span class="notify-badge-green" *ngIf="items.IsSmartRxExists">Smart RX</span>
+                <img [src]="items.ThumbnailPath" class="img-fluid rounded shadow">
+              </a>
+              <div class="dropdown-menu" style="position: fixed;text-align:left;">
+                <a *ngIf="items.IsSmartRxExists" [routerLink]="['/smartrx',encryptData(items.UniqueFileID)]"
+                    data-backdrop="static" data-keyboard="false" class="dropdown-item"><span class="btn-inner--icon"><i
+                        class="ni ni-app" style="color:#3333ff;"></i></span>&nbsp;Show Smart Rx</a>
+                <a *ngIf="!items.IsSmartRxExists" [routerLink]="" (click)="requestForSmartRx(items.UniqueFileID)"
+                    data-backdrop="static" data-keyboard="false" class="dropdown-item"><span class="btn-inner--icon"><i
+                        class="ni ni-app" style="color:#3333ff;"></i></span>&nbsp;Request for Smart Rx</a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#modal-form-share" data-backdrop="static" data-keyboard="false" (click)="onImageClick(items.FilePath)"><span
+                  class="btn-inner--icon" style="color: rgb(42, 218, 209);"><i
+                    class="fa fa-file"></i></span>&nbsp;Show Uploaded RX</a>
+              </div>
+            </li>
+          </ul>
+    
+    
+    
+          <figcaption class="image-caption-text">
+            <p style="font-size: small; font-weight: bold;">{{items.Caption}}
+            </p>
+            <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+              <li class="nav-item dropdown">
+                <a class="nav-link no-caret" data-toggle="dropdown" role="button" style="padding-top: 0rem;">
+    
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                      style="color:#0505a7;"></path>
+                  </svg>
+                  <span class="nav-link-inner--text"></span>
+                </a>
+                <div class="dropdown-menu" style="position: fixed;text-align:left;">
+                  <!--  <a [routerLink]="['/landing']" class="dropdown-item">Landing</a>
+                    <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a> -->
+                  <a [routerLink]="" data-toggle="modal" data-target="#modal-form-tag" data-backdrop="static"
+                    data-keyboard="false" (click)="loadTag(items.UniqueFileName)" class="dropdown-item"><span
+                      class="btn-inner--icon" style="color: rgb(0, 32, 139);"><i class="fa fa-tag"></i></span>&nbsp;Tag</a>
+                  <a [routerLink]="" (click)="downloadFile(items.UniqueFileName)" class="dropdown-item"><span
+                      class="btn-inner--icon" style="color: darkcyan;"><i
+                        class="ni ni-cloud-download-95"></i></span>&nbsp;Download</a>
+                  <a *ngIf="items.IsSmartRxExists" [routerLink]="" data-toggle="modal" data-target="#modal-form-SmartRx"
+                    data-backdrop="static" data-keyboard="false" (click)="viewSmartRx(items.UniqueFileID)"
+                    class="dropdown-item"><span class="btn-inner--icon"><i class="ni ni-collection"
+                        style="color:#99ff33;"></i></span>&nbsp;Digital Rx</a>
+                  <a *ngIf="items.IsSmartRxExists" [routerLink]="['/smartrx',encryptData(items.UniqueFileID)]"
+                    data-backdrop="static" data-keyboard="false" class="dropdown-item"><span class="btn-inner--icon"><i
+                        class="ni ni-app" style="color:#3333ff;"></i></span>&nbsp;Smart Rx</a>
+                  <a *ngIf="!items.IsSmartRxExists" [routerLink]="" (click)="requestForSmartRx(items.UniqueFileID)"
+                    data-backdrop="static" data-keyboard="false" class="dropdown-item"><span class="btn-inner--icon"><i
+                        class="ni ni-app" style="color:#3333ff;"></i></span>&nbsp;Request Smart Rx</a>
+                  <a [routerLink]="" (click)="deleteFile(items.UniqueFileName)" class="dropdown-item"> <span
+                      class="btn-inner--icon"><i class="fa fa-remove" style="color: #ff0000 ;"></i></span>&nbsp;Delete</a>
+                  <a [routerLink]="" data-toggle="modal" data-target="#modal-form-move" data-backdrop="static"
+                    data-keyboard="false" (click)="moveFile(items.UniqueFileName)" class="dropdown-item"><span
+                      class="btn-inner--icon" style="color: darkcyan;"><i
+                        class="ni ni-curved-next"></i></span>&nbsp;Move</a>
+                  <a [routerLink]="" data-toggle="modal" data-target="#modal-form-mail" data-backdrop="static"
+                    data-keyboard="false" (click)="mailBtnClick(items.UniqueFileName)" class="dropdown-item"><span
+                      class="btn-inner--icon" style="color: rgb(113, 139, 0);"><i
+                        class="fa fa-envelope"></i></span>&nbsp;Share</a>
+                </div>
+              </li>
+            </ul>
+          </figcaption>
+        </figure>
+        <!-- <figure class="fig">
+        <ul class="progressbar">
+          <li class="active">Rx</li>
+          <li>Digital Rx</li>
+          <li>Smart Rx</li>
+        </ul>
+      </figure> -->
+      </div>
+    </div>
+    <div class="row row-grid">
+      <div class="col-lg-8">
+        <div class="floatReport">
+          <div class="row justify-content-center" style="background: transparent; border-color: transparent;">
+            <div class="col-lg-12" style="background: transparent; border-color: transparent;">
+              <div class="card " style="background: transparent; border-color: transparent;">
+                <div class="card-body" style="background: transparent; border-color: transparent;">
+                  <div class="form-group" style="background: transparent; border-color: transparent;">
+                    <button type="button" class="btn"
+                      style="float: right;height: 50%;border-radius: 30px;background-color: darkorange;"
+                      data-toggle="modal" data-target="#modal-form-report" data-backdrop="static"
+                      data-keyboard="false">Report &nbsp; <i class="fa fa-external-link"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <div class="floatAdd">
+
+          <div class="row justify-content-center" style="background: transparent; border-color: transparent;">
+            <div class="col-lg-12" style="background: transparent; border-color: transparent;">
+              <div class="card " style="background: transparent; border-color: transparent;">
+                <div class="card-body" style="background: transparent; border-color: transparent;">
+                  <div class="form-group" style="background: transparent; border-color: transparent;">
+                    <ul class="navbar-nav navbar-nav-hover">
+                      <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
+                        <a style="padding: 10px;
+                          border-radius: 10px;
+                          background-color: darkorange;" data-toggle="dropdown" role="button">
+                          <i class="fa fa-plus"></i>
+                        </a>
+                        <div class="dropdown-menu" style="position:fixed;text-align:left;">
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-upload" data-backdrop="static"
+                            data-keyboard="false" class="dropdown-item"><span class="btn-inner--icon"
+                              style="color: rgb(42, 218, 209);"><i class="fa fa-file"></i></span>&nbsp;Add File</a>
+                          <a [routerLink]="" data-toggle="modal" data-placement="top" title="Add Folder"
+                            data-target="#modal-form" data-backdrop="static" data-keyboard="false"
+                            class="dropdown-item"><span class="btn-inner--icon"
+                              style="color: rgba(255, 174, 0, 0.938);"><i class="fa fa-folder"></i></span>&nbsp;Add
+                            Folder</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="modal fade" id="modal-form-upload" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-sm-8 col-8" style="margin-left: 15px;">
+                        <label for="file-upload" class="custom-file-upload" style="font-size: large;">
+                          <i class="fa fa-camera fa-2x"></i> &nbsp; Take Photo
+                        </label>
+                        <input id="file-upload" (change)="uploadPhoto($event)" type="file" style="display: none;" />
+                      </div>
+
+                      <div>
+                        <input type="hidden" [(ngModel)]="UniqueFileId" name="UniqueFileId">
+                        <input type="hidden" [(ngModel)]="UniqueFileName" name="UniqueFileName">
+                      </div>
+                    </div>
+                    <br>
+                    <div *ngIf="this.IsUploadPossible">
+                      <div class="row">
+                        <div class="col-sm-8 col-8" style="margin-left: 10px;">
+                          <div class="form-group">
+                            <label>File Name</label>
+                            <input class="form-control" type="text" (focus)="focus=true" (blur)="focus=false"
+                              [(ngModel)]="Caption" name="Caption" />
+                            <button type="button" class="btn btn-primary my-4" (click)="uploadPrescription()">Upload
+                              File</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <!-- <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1" [url]=""
+                        [image]="SharedImageFilePath" [autoSetMeta]="true"></share-buttons> -->
+                      <button id="BtnCloseUploadModal" type="button" class="btn btn-danger my-4"
+                        data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff;">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Add Folder</h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative">
+                        <!-- <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                            </div> -->
+                        <input class="form-control" [(ngModel)]="FolderName" name="FolderName" placeholder="Folder Name"
+                          type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group input-group-alternative">
+                        <!-- <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                            </div> -->
+                        <input class="form-control" [(ngModel)]="Description" name="Description"
+                          placeholder="Description" type="text">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4" (click)="addFolderClick()">Add</button>
+                      <button type="button" id="BtnCloseAddFolderModal" class="btn btn-danger my-4"
+                        data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-edit" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Rename Folder</h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="form-group mb-3 collapse">
+                      <div class="input-group input-group-alternative">
+                        <!-- <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                            </div> -->
+                        <input class="form-control" [(ngModel)]="EditFolderId" name="EditFolderId" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class=" control-label">
+                        Folder Name
+                      </label>
+                      <input class="form-control" [(ngModel)]="EditFolderName" name="EditFolderName" type="text">
+                    </div>
+
+                    <div class="form-group">
+                      <label class=" control-label">
+                        Folder Description
+                      </label>
+                      <input class="form-control" [(ngModel)]="EditFolderDescription" name="EditFolderDescription"
+                        placeholder="Description" type="text">
+
+                    </div>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4" (click)="onEditClick()">Update</button>
+                      <button #closeModal type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-move" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Move File</h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="form-group">
+                      <div>
+                        <div>
+                          Select destination folder:
+                        </div><br>
+                        <select class="form-control" [(ngModel)]="DestinationFolderId" name="DestinationFolderId"
+                          id="DestinationFolder">
+                          <option value="" selected="selected">--Select Folder--</option>
+                          <option *ngFor="let items of folderList" value="{{items.FolderID}}">{{items.FolderName}}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4" (click)="onMoveFolderClick()">Move</button>
+                      <button #closeModalMove type="button" class="btn btn-danger my-4" data-dismiss="modal"
+                        (click)="closeClick()">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-ViewAll" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">All Files<button
+                        class="close" data-dismiss="modal">x</button></h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5" style="background-color: #FFF;">
+                  <form role="form">
+
+                    <div class="form-group">
+                      <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Caption</th>
+                            <th scope="col" class="collapse">Date</th>
+                            <th scope="col" class="collapse">Tag1</th>
+                            <th scope="col" class="collapse">Tag2</th>
+                            <th scope="col" class="collapse">Tag3</th>
+                            <th scope="col" class="collapse">Tag4</th>
+                            <th scope="col" class="collapse">Tag5</th>
+                            <th scope="col">File</th>
+                            <th scope="col">Action</th>
+                            <th scope="col" class="collapse">Share</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let items of allFileList">
+                            <td>
+                              {{items.Caption}}
+                            </td>
+                            <td>
+                              {{items.FileUploadDate}}
+                            </td>
+                            <td class="collapse">
+                              {{items.Tag1}}
+                            </td>
+                            <td class="collapse">
+                              {{items.Tag2}}
+                            </td>
+                            <td class="collapse">
+                              {{items.Tag3}}
+                            </td>
+                            <td class="collapse">
+                              {{items.Tag4}}
+                            </td>
+                            <td class="collapse">
+                              {{items.Tag5}}
+                            </td>
+                            <td>
+                              <a data-toggle="modal" data-target="#modal-form-share" data-backdrop="static"
+                                data-keyboard="false" (click)="onImageClick(items.FilePath)"><img
+                                  [src]="items.ThumbnailPath" class="img-fluid rounded shadow" height="50px"
+                                  width="50px"></a>
+                            </td>
+                            <td>
+                              <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                                    style="padding-top: 0rem;">
+
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                        style="color:#0505a7;"></path>
+                                    </svg>
+                                    <span class="nav-link-inner--text"></span>
+                                  </a>
+                                  <div class="dropdown-menu" style="position:fixed;text-align:left;">
+                                    <a [routerLink]="" data-toggle="modal" data-target="#modal-form-tag"
+                                      data-backdrop="static" data-keyboard="false"
+                                      (click)="loadTag(items.UniqueFileName)" class="dropdown-item"><span
+                                        class="btn-inner--icon" style="color: rgb(0, 32, 139);"><i
+                                          class="fa fa-tag"></i></span>&nbsp;Tag</a>
+                                    <a [routerLink]="" (click)="downloadFile(items.UniqueFileName)"
+                                      class="dropdown-item"><span class="btn-inner--icon" style="color: darkcyan;"><i
+                                          class="ni ni-cloud-download-95"></i></span>&nbsp;Download</a>
+                                    <a *ngIf="items.IsSmartRxExists" [routerLink]="" data-toggle="modal"
+                                      data-target="#modal-form-SmartRx" data-backdrop="static" data-keyboard="false"
+                                      (click)="viewSmartRx(items.UniqueFileID)" class="dropdown-item"><span
+                                        class="btn-inner--icon"><i class="ni ni-collection"
+                                          style="color:#99ff33;"></i></span>&nbsp;Digital Rx</a>
+                                    <a *ngIf="items.IsSmartRxExists" [routerLink]="['/smartrx']" data-backdrop="static"
+                                      data-keyboard="false" class="dropdown-item"><span class="btn-inner--icon"><i
+                                          class="ni ni-app" style="color:#3333ff;"></i></span>&nbsp;Smart Rx</a>
+                                    <a [routerLink]="" (click)="deleteFile(items.UniqueFileName)" class="dropdown-item">
+                                      <span class="btn-inner--icon"><i class="fa fa-remove"
+                                          style="color: #ff0000 ;"></i></span>&nbsp;Delete</a>
+                                    <a [routerLink]="" data-toggle="modal" data-target="#modal-form-move"
+                                      data-backdrop="static" data-keyboard="false"
+                                      (click)="moveFile(items.UniqueFileName)" class="dropdown-item"><span
+                                        class="btn-inner--icon" style="color: darkcyan;"><i
+                                          class="ni ni-curved-next"></i></span>&nbsp;Move</a>
+                                    <a [routerLink]="" data-toggle="modal" data-target="#modal-form-mail"
+                                      data-backdrop="static" data-keyboard="false"
+                                      (click)="mailBtnClick(items.UniqueFileName)" class="dropdown-item"><span
+                                        class="btn-inner--icon" style="color: rgb(113, 139, 0);"><i
+                                          class="fa fa-envelope"></i></span>&nbsp;Share</a>
+                                  </div>
+                                </li>
+                              </ul>
+                            </td>
+                            <td class="collapse">
+                              <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1"
+                                [url]="'http://epsilonlimited.com/'" [image]="items.FilePath" [autoSetMeta]="true">
+                              </share-buttons>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="text-center">
+                      <!-- <button type="button" class="btn btn-primary my-4" (click)="onMoveFolderClick()">Move</button> -->
+                      <button #closeModalViewAll type="button" class="btn btn-danger my-4"
+                        data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-tag" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Tag Prescription
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="form-group mb-3" style="margin-bottom: 10px; text-align: right;">
+                      <button type="button" class="btn btn-sm btn-success btn-tooltip" (click)="onAddMore()"><span
+                          class="btn-inner--icon"><i class="fa fa-plus"></i></span></button>
+                      <button type="button" class="btn btn-sm btn-danger btn-tooltip" (click)="onRemoveTag()"><span
+                          class="btn-inner--icon"><i class="fa fa-minus"></i></span></button>
+
+                    </div>
+                    <div class="form-group mb-3" *ngIf="this.IsTag1">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="Tag1" name="Tag1" placeholder="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group mb-3" *ngIf="this.IsTag2">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="Tag2" name="Tag2" placeholder="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group" *ngIf="this.IsTag3">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="Tag3" name="Tag3" placeholder="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group" *ngIf="this.IsTag4">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="Tag4" name="Tag4" placeholder="" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group" *ngIf="this.IsTag5">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="Tag5" name="Tag5" placeholder="" type="text">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4" (click)="onTagDoneClick()">Save</button>
+                      <button #closeModalTag id="BtnCloseTagModal" type="button" class="btn btn-danger my-4"
+                        data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-form-report" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+      aria-hidden="true" style="display: none; background-color: white;">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document" style="background-color: white;">
+        <div class="modal-content" style="background-color: white;">
+          <div class="modal-body p-0" style="background-color: white;">
+            <div class="card bg-secondary shadow border-0 mb-0" style="background-color: white;">
+
+              <div class="card-body px-lg-6 py-lg-6" id="" style="background-color: white;">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h5>Screen</h5>
+                  <div class="form-group" style="width: 100%;">
+                    <select id="ScreenReport" class="form-control">
+                      <option value="SmartRx">My Rx</option>
+                    </select>
+                  </div>
+                  <h5>What problem are you facing?</h5>
+                  <div class="form-group" style="width: 100%;">
+                    <textarea id="txtReport"
+                      style="width: 100%;padding: 5px; border-radius: 10px;border:2px solid #d4d2cd">{{Note}}</textarea>
+                  </div>
+                  <div class="form-group collapse">
+                    <div class="labelinfo">
+                      <p style="font-size:x-small;padding-left: 5px;color: #000;"><strong>Greetings!</strong> Your
+                        feedback is important for us.</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="onClickReport()">Send Report &nbsp; <i
+                        class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseReportModal" type="button" class="btn btn-danger my-4"
+                      data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-share" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative">
+                        <img style="height: 100%; width: 100%;" [src]="SharedImageFilePath"
+                          class="img-fluid rounded shadow">
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <!-- <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1" [url]=""
+                        [image]="SharedImageFilePath" [autoSetMeta]="true"></share-buttons> -->
+                      <button #closeModalTag id="BtnCloseViewModal" type="button" class="btn btn-danger my-4"
+                        data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-SmartRx" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Smart RX</h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5" style="background-color: #FFF;">
+                  <form role="form">
+                    <table style="width: 100%;" id="contentToConvert">
+                      <tr style="width: 100%;">
+                        <td style="width: 50%; color: black;">{{SmartRxMasterInfo.DoctorName}}</td>
+                        <td style="text-align: right; width: 50%; color: black;">{{SmartRxMasterInfo.ChemberName}}</td>
+                      </tr>
+                      <tr style="width: 100%;">
+                        <td style="width: 50%; color: black;">{{SmartRxMasterInfo.DoctorSpecialization}}</td>
+                        <td style="text-align: right; width: 50%; color: black;">{{SmartRxMasterInfo.Address1}}</td>
+                      </tr>
+                      <tr style="width: 100%;color: black;">
+                        <td style="width: 50%;">{{SmartRxMasterInfo.DoctorDesignation}}</td>
+                        <td style="text-align: right; width: 50%; color: black;">{{SmartRxMasterInfo.ContactNo}}</td>
+                      </tr>
+                      <br>
+                      <tr style="width: 100%; border-top:1px solid black; color: black;">
+                        <td style="width: 50%;">Patient Name: {{SmartRxMasterInfo.PatientName}}</td>
+                        <td style="width: 50%; color: black; text-align: right;">Age: {{SmartRxMasterInfo.Age}}</td>
+                      </tr>
+                      <tr style="width: 100%; border-bottom:1px solid black; color: black;">
+                        <td style="width: 50%;">Gender: {{SmartRxMasterInfo.Gender}}</td>
+                        <td style="width: 50%; color: black; text-align: right;">Prescription Date:
+                          {{SmartRxMasterInfo.PrescriptionDate}}</td>
+                      </tr>
+                      <tr style="width: 100%; color: black;">
+                        <td style="width:40%">
+                          <table style="width:40%">
+                            <tr>
+                              <td>C/C:</td>
+                            </tr>
+                            <tr>
+                              <td>{{SmartRxMasterInfo.ChiefComplaint}}</td>
+                            </tr>
+                            <tr>
+                              <td>H/O:</td>
+                            </tr>
+                            <tr>
+                              <td>{{SmartRxMasterInfo.PastIllness}}</td>
+                            </tr>
+                            <tr>
+                              <td>M/H:</td>
+                            </tr>
+                            <tr>
+                              <td>{{SmartRxMasterInfo.MedicineHistory}}</td>
+                            </tr>
+                            <tr>
+                              <td>I/R:</td>
+                            </tr>
+                            <tr>
+                              <td>{{SmartRxMasterInfo.PastInvestigationRecord}}</td>
+                            </tr>
+                            <tr>
+                              <table id="labTable">
+                                <tr>
+                                  <td></td>
+                                </tr>
+                              </table>
+                            </tr>
+                          </table>
+                        </td>
+                        <td style="width:60%">
+                          <table id="medicineTable">
+                            <tr>
+                              <td></td>
+                            </tr>
+                          </table>
+                          <table>
+                            <tr>
+                              <td>Restrictions</td>
+                            </tr>
+                            <tr>
+                              <td>{{SmartRxMasterInfo.Restrictions}}</td>
+                            </tr>
+                            <tr>
+                              <td>Advice</td>
+                            </tr>
+                            <tr>
+                              <td>{{SmartRxMasterInfo.Advice}}</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <br>
+                      <tr style="width: 100%;color: red; font-size: small; font-style: italic;">
+                        <td>Powered By SmartRx</td>
+                      </tr>
+                    </table>
+                    <br>
+                    <div class="text-center">
+                      <button #closeModalTag type="button" class="btn btn-sm btn-danger btn-tooltip"
+                        data-dismiss="modal">Close</button>
+                      <button type="button" (click)="print()" class="btn btn-sm btn-primary btn-tooltip"> Print <span
+                          class="btn-inner--icon"><i class="fa fa-print"></i></span>
+                      </button>
+
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form">Form</button> -->
+      <div class="modal fade" id="modal-form-mail" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0 mb-0">
+                <div class="card-header pb-3" style="background-color: #b3b3ff">
+                  <div class="text-muted text-center mb-3">
+                    <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Email Prescription
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                  <form role="form">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="MailTo" name="MailTo" placeholder="Mail To"
+                          type="text">
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-alternative">
+                        <input class="form-control" [(ngModel)]="MailSubject" name="MailSubject"
+                          placeholder="Mail Subject" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group input-group-alternative">
+                        <textarea class="form-control" [(ngModel)]="MailBody" name="MailBody"
+                          placeholder="Mail Body"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group collapse">
+                      <div class="input-group input-group-alternative">
+                        <label>{{AttachedFileName}}</label>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4" (click)="sendMail()">Send</button>
+                      <button #closeModalTag type="button" id="BtnCloseEmailModal" class="btn btn-danger my-4"
+                        data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

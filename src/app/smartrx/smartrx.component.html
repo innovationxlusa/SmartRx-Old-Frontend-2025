@@ -1,0 +1,2516 @@
+<style>
+  /* Add a black background color to the top navigation */
+div.scrollmenu {
+  background-color: #fff;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 5px;
+  position: relative;
+}
+.rel1 {
+  position: relative;
+  overflow: auto;
+}
+.rel2 { position:fixed;overflow: auto; width: 100%; background: white;}
+.abs { position: absolute;
+   }
+   
+div.scrollmenu a {
+  display: inline-block;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  border:0px solid #000152;
+  border-radius: 30px;
+  background-color: #f0f5f5;
+  margin: 5px;
+  margin-top: 15px;
+  
+}
+
+div.scrollmenu a:hover {
+  background-color: #d1e0e0;
+}
+
+div.scrollmenu::-webkit-scrollbar {
+  height: 5px;
+}
+  
+div.scrollmenu::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+.shape{
+  text-align:center;
+  background-color:rgba(5, 5, 5, 0.7);
+  width:200px;
+  height:60px;
+  line-height:60px;
+  color:white;
+  margin:20px auto;
+  position:relative;
+}
+.shape:before{
+  content:"";
+  width:0px;
+  height:0px;
+  border-top:60px solid rgba(3,78,136,0.7);
+  border-left:60px solid transparent;
+  position:absolute;
+  right:100%;
+  top:0px;
+}
+
+.icon-bar {
+  width: 100%;
+  background-color: #e6e6ff;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 30px;
+}
+
+.icon-bar a:hover {
+  background-color: #b3b3ff;
+}
+
+.active {
+  background-color: darkblue;
+}
+
+.card-body{
+  background: transparent;
+}
+
+div.rxbutton {
+  background-color: #fff;
+}
+
+div.rxbutton a {
+  display: inline-block;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  font-size: smaller;
+  font-weight: 600;
+  text-decoration: none;
+  border:0px solid #000152;
+  border-radius: 30px;
+  background-color: #e6ecff;
+  margin: 5px;
+  margin-top: 5px;
+  
+}
+
+div.rxbutton a:hover {
+  background-color: #b3c6ff;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 2pt solid white;
+}
+
+nav{
+  position: fixed;
+  top: 0;
+  width:100%;
+  padding: 0 100px;
+  display: flex;
+  transition: 0.5s;
+
+}
+
+.fa-square:before {
+  content: "\f04d";
+}
+
+.color{
+  background: #ccffcc;
+}
+.minus, .plus{
+			width:20px;
+			height:20px;
+			background:#f2f2f2;
+			border-radius:4px;
+			padding:8px 5px 8px 5px;
+			border:1px solid #ddd;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+		}
+		input{
+			height:34px;
+      width: 100px;
+      text-align: center;
+      font-size: 26px;
+			border:1px solid #ddd;
+			border-radius:4px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    span {cursor:pointer; }
+		.number{
+			margin:100px;
+		}
+  .profcard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.cardswap-container {
+        width: 100%;
+        overflow-x: scroll;
+        display: flex;
+        background-color: #fff;
+    }
+
+    .cardswap {
+        min-width: 200px;
+        height: 430px;
+        border-radius: 16px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        transition: 0.2s;
+    }
+
+    .cardswap:not(:first-child) {
+        margin-left: -80px;
+}
+
+.cardswap:hover {
+        transform: translateY(-1rem);
+    }
+
+.cardswap-container::-webkit-scrollbar {
+  height: 5px;
+}
+  
+.cardswap-container::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+textarea {
+  margin: 0;
+  min-height: 120px;
+}
+
+.field-text {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.field-text--character-count {
+  text-align: right;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #809fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #6666ff;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(85px);
+  -ms-transform: translateX(85px);
+  transform: translateX(85px);
+}
+
+/*------ ADDED CSS ---------*/
+.on
+{
+  display: none;
+}
+
+.on, .off
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}
+
+  #my-pie-chart-container {
+  display: flex;
+  align-items: center;
+}
+
+#my-pie-chart {
+  background: conic-gradient(blue 0.55% 6.08%, green 6.08% 13.68%, yellow 13.68% 23.27%, orange 23.27% 40.47%, red 40.47%);
+  border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+#legenda {
+  margin-left: 10px;
+  background-color: white;
+  padding: 5px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+}
+
+.entry-color {
+    height: 10px;
+    width: 10px;
+}
+
+.entry-text {
+  margin-left: 5px;
+}
+
+#color-red {
+  background-color: red;
+}
+
+#color-orange {
+  background-color: orange;
+}
+
+#color-yellow {
+  background-color: yellow;
+}
+
+#color-green {
+  background-color: green;
+}
+
+#color-blue {
+  background-color: blue;
+}
+
+#color-black {
+  background-color: black;
+}
+
+#color-brown {
+  background-color: brown;
+}
+
+
+.jump-link
+{
+float:right;
+margin:1% 1%;
+}
+.jump-link a
+{
+text-align:center;
+display:inline-block;
+color:#333333;
+margin:5px 4px 5px 10px;
+padding:9px 10px 9px 10px;
+border: 8px inset #0572F8;
+font:100% 'Oswald',Sans-Serif;
+text-decoration:none;
+text-transform:uppercase;
+}
+.jump-link a:hover
+{
+border: 8px inset #05B6F8;
+color:#333333;
+}
+
+.labeldanger {
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+}
+
+.labelsuccess {
+  background-color: #ddffdd;
+  border-left: 6px solid #04AA6D;
+}
+
+.labelinfo {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
+
+
+.labelwarning {
+  background-color: #ffffcc;
+  border-left: 6px solid #ffeb3b;
+}
+
+#fixed {
+  width: 300px;
+  height: 100%;
+  max-height: 345px;
+  position: fixed;
+  background: #333;
+  border: 2px solid #333;
+}
+#menu {
+  background: pink;
+  line-height: 25px;
+  padding-left: 20px;
+}
+#scrollable {
+  position: absolute;
+  height: calc(100% - 30px);
+  width: 100%;
+  overflow-y: auto;
+}
+
+.switchsmall {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switchsmall input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slidersmall {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slidersmall:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slidersmall {
+  background-color: #2196F3;
+}
+
+input:focus + .slidersmall {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slidersmall:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slidersmall.round {
+  border-radius: 26px;
+}
+
+.slidersmall.round:before {
+  border-radius: 50%;
+}
+
+.floatReport {
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+}
+
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+  alert('In');
+window.onhashchange = function() {
+ alert();
+}
+
+  $(document).bind("keydown keypress", function(e){
+    alert();
+        if( e.which == 8 ){ // 8 == backspace
+            if(!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly ){
+                e.preventDefault();
+            }
+        }
+    });
+</script>
+
+<div id="smartRxHeader" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned" style="background: white; min-height: 100px;">
+  <div class="container">
+  <div class="col-lg-12">
+    <!--<div class="icon-bar">
+      <a class="active" href="#"><i class="fa fa-file"></i></a>
+      <a [routerLink]="['/UploadRegPrescriptionComponent']"><i class="fa fa-home"></i></a> 
+      <a href="#"><i class="fa fa-arrow-left"></i></a> 
+      <a href="#"><i class="fa fa-arrow-right"></i></a>
+      <a href="#"><i class="fa fa-search"></i></a> 
+    </div>-->
+    <div class="content" style="padding: 10px;margin-top: -20px;">
+      <div class="formElements" style="width: 100%;">
+        <label style="font-size: small;font-weight: 600;">Patient: &nbsp; {{PatientName}}</label><label style="float: right;font-size: small;font-weight: 600;">Date: &nbsp; {{PrescriptionDate}}</label>
+        <br><label style="font-size: small;font-weight: 600;">Doctor: &nbsp;{{DoctorName}}</label><label style="float: right;font-size: small;font-weight: 600;">Age: &nbsp; {{Age}}</label>
+      </div>
+  </div>
+   <!-- <div class="form-group">
+      <div class="col-md-4">
+        <b>Patient Name:</b> &nbsp; {{PatientName}}
+      </div>
+      <div class="col-md-4">
+        <b>Patient Name:</b> &nbsp; {{PatientName}}
+      </div>
+
+      <p><b>RX 1</b> <br> <b>Patient Name:</b> &nbsp; {{PatientName}} <br> <b>Age:</b> &nbsp; 28 </p>
+    </div>-->
+    <div class="icon-bar collapse">
+      <a class="active" href="#"><i class="fa fa-file" style="color: #999999;"></i></a>
+      <a [routerLink]="['/UploadRegPrescriptionComponent']"><i class="fa fa-home" style="color: #999999;"></i></a> 
+      <a href="#"><i class="fa fa-arrow-left" style="color: #999999;"></i></a> 
+      <a href="#"><i class="fa fa-arrow-right" style="color: #999999;"></i></a>
+      <a href="#"><i class="fa fa-search" style="color: #999999;"></i></a> 
+    </div>
+    <div class="rel2">
+      <div class="scrollmenu">
+        <a [routerLink]="['/UploadRegPrescriptionComponent']"><i class="fa fa-home" style="color: #595959;"></i></a> 
+        <a (click)="onCLickMenu('Summary')">Overview</a>
+        <a *ngIf="ConfigIsDoctorExists" (click)="onCLickMenu('DoctorInfo')">Doctor's Info</a>
+        <a *ngIf="ConfigIsPatientExists" (click)="onCLickMenu('PatientInfo')">Patient Information</a>
+        <a *ngIf="ConfigIsMedicineExists" (click)="onCLickMenu('Medicine')">Medicine</a>
+        <a *ngIf="ConfigIsInvestigationExists" (click)="onCLickMenu('Investigation')">Investigation</a>
+        <a *ngIf="ConfigIsAdviceExists" (click)="onCLickMenu('Advice')">Advice</a>
+        <a *ngIf="ConfigIsFavouriteExists" (click)="onCLickMenu('Favourites')">Favourites</a>
+      </div>
+    </div>
+      
+  </div>
+</div>
+</div>
+<main>
+  
+  <section class="section section-shaped section-lg">
+   <!-- <div class="shape shape-style-1 bg-gradient-default">-->
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+
+    <div class="container pt-lg-md" >
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="">
+          <!-- <div class=""> card bg-secondary shadow border-0 -->
+  <div class="row justify-content-center" id="divSummary" style="margin-top: 50px;">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+            <h3><i class="fa fa-object-group" style="color:teal;"></i>&nbsp;Overview</h3>
+          </div>
+          <div class="form-group">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr style="background: #f0f5f5;" *ngIf = "NoOfVitalStatistics > 0">
+                  <td>
+                    Vital Statistics
+                  </td>
+                  <td>
+                    <i (click)="onCLickMenu('VitalStatisticsWithHeader')"> {{NoOfVitalStatistics}} Measurement Taken </i>
+                  </td>
+                </tr>
+                <tr style="background: #f0f5f5;">
+                  <td>
+                    Medicine
+                  </td>
+                  <td>
+                    <i (click)="onCLickMedicine('Medicine')"> {{NoOfMedicine}} Medicine Given </i> <br> <p style="font-size: small;" (click)="onCLickMedicineCost('Medicine')"> Total Cost: &nbsp;<strong style="font-weight: 600;color:darkblue;"> ৳ {{TotalMedicineCost}} </strong> (Approx.) </p>
+                  </td>
+                </tr>
+                <tr style="background: #f0f5f5;" *ngIf = "NoOfLabInvestigation > 0">
+                  <td>
+                    Lab Investigation
+                  </td>
+                  <td>
+                    <i (click)="onCLickLabInvestigation('Investigation')"> {{NoOfLabInvestigation}} Lab Investigation Recommended </i> <br> <p style="font-size: small;" (click)="onCLickLabInvestigationCost('Investigation')"> Total Cost: &nbsp; <strong style="font-weight: 600;color:darkblue;"> ৳ {{TotalLabCost}} </strong> (Approx.) </p>
+                  </td>
+                </tr>
+                <tr style="background: #f0f5f5;" *ngIf = "VisitFee > 0">
+                  <td>
+                    Visit Fee
+                  </td>
+                  <td>
+                    ৳ {{VisitFee}} <br> <p style="font-size: small;"> You can update visit fee using the update button. </p>
+                    <label style="color: #6666ff; font-weight: 700;" data-toggle="modal" data-target="#modal-form-updatecost" data-backdrop="static" data-keyboard="false">Update &nbsp; <i class="fa fa-edit"></i></label>
+                  </td>
+                </tr>
+                <tr style="background: #f0f5f5;" *ngIf = "TransportCost > 0">
+                  <td>
+                    Transport Cost
+                  </td>
+                  <td>
+                    ৳ {{TransportCost}} <br> <p style="font-size: small;"> You can update transport cost using the update button. </p>
+                    <label style="color: #6666ff; font-weight: 700;" data-toggle="modal" data-target="#modal-form-updatecost" data-backdrop="static" data-keyboard="false">Update &nbsp; <i class="fa fa-edit"></i></label>
+                  </td>
+                </tr>
+                <tr style="background: #f0f5f5;" *ngIf = "Note">
+                  <td>
+                    Note
+                  </td>
+                  <td>
+                    {{Note}} <br> <p style="font-size: small;"> You can add/modify note using the update button. </p>
+                    <label style="color: #6666ff; font-weight: 700;" data-toggle="modal" data-target="#modal-form-addnotes" data-backdrop="static" data-keyboard="false">Update &nbsp; <i class="fa fa-edit"></i></label>
+                  </td>
+                </tr>
+                <tr style="background: #f0f5f5;" *ngIf = "NextAppointmentDate">
+                  <td>
+                    Next Appointment Date
+                  </td>
+                  <td>
+                    {{NextAppointmentDate}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row" style="float: right;">
+            <ul class="navbar-nav navbar-nav-hover" style="float: right;">
+              <li class="nav-item dropdown">
+                <a style="display: inline-block;
+                color: #000;
+                text-align: center;
+                padding: 10px;
+                font-size: smaller;
+                font-weight: 600;
+                text-decoration: none;
+                border:0px solid #000152;
+                border-radius: 30px;
+                background-color: #e6ecff;
+                margin: 5px;
+                margin-top: 5px;" data-toggle="dropdown" role="button">
+                  <i class="fa fa-plus-square"></i> Add
+                </a>
+                
+                
+                <div class="dropdown-menu" style="position:fixed;">
+                  <a [routerLink]="" data-toggle="modal" data-target="#modal-form-addtransportcost" data-backdrop="static" data-keyboard="false" class="dropdown-item"><span
+                    class="btn-inner--icon" style="color: green;"><i
+                      class="fa fa-taxi"></i></span>&nbsp;Transport Cost</a>
+                  <a [routerLink]="" data-toggle="modal" data-target="#modal-form-addvisitfee" data-backdrop="static" data-keyboard="false" class="dropdown-item"><span
+                    class="btn-inner--icon" style="color: orange;"><i
+                      class="fa fa-money"></i></span>&nbsp;Visit Fee</a>
+                <a [routerLink]="" data-toggle="modal" data-target="#modal-form-addnotes" data-backdrop="static" data-keyboard="false" class="dropdown-item"><span
+                    class="btn-inner--icon" style="color: blue;"><i
+                      class="fa fa-sticky-note"></i></span>&nbsp;Note</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <br>
+          <br>
+          <div id="pichart">
+            <google-chart [type]="myType" [data]="myData" [options]="options" [title]="title" [height]="height" [width]="width" >
+
+            </google-chart>
+          </div>
+          
+          <div class="form-group collapse">
+            <button type="button" class="btn btn-primary my-4" data-toggle="modal" data-target="#modal-form-addnotes" data-backdrop="static" data-keyboard="false">Add Note &nbsp; <i class="fa fa-file-text-o"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center" id="divPatientInfo">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+            <h3><i class="fa fa-user-plus" style="color: slateblue;"></i>&nbsp;Patient Information</h3>
+            
+          </div>
+          <div class="form-group">
+            <h4>Personal Information &nbsp; <i class="fa fa-caret-down" id="iPersonalInfo" (click)="togglePersonalInfo(this)"></i></h4>
+            <p id="divPersonalInfo"><b *ngIf="PatientName">Patient Name: &nbsp;</b> {{PatientName}} <br *ngIf="PatientName"> 
+              <b *ngIf="Gender">Gender: &nbsp;</b> {{Gender}} <br *ngIf="Gender"> 
+              <b *ngIf="Age">Age: &nbsp;</b> {{Age}} </p>
+          </div>
+          <div class="form-group">
+            <h4>Patient History &nbsp; <i class="fa fa-caret-down" id="iPatientHistory" (click)="togglePatientHistory(this)"></i></h4>
+            <p id="divPatientHistory"> <b *ngIf="PastIllness">Past Illness: &nbsp;</b> {{PastIllness}} <br *ngIf="PastIllness"> <b *ngIf="PresentIllness">Present Illness: &nbsp;</b>  {{PresentIllness}} <br *ngIf="PresentIllness"> 
+              <b *ngIf="ChiefComplaint">Chief Complaint: &nbsp;</b> {{ChiefComplaint}} <br *ngIf="ChiefComplaint"> 
+              <b *ngIf="MedicineHistory">Medicine History: &nbsp;</b> {{MedicineHistory}} 
+              <b *ngIf="Diagonosis">Diagonosis: &nbsp;</b> {{Diagonosis}} <br *ngIf="Diagonosis"> </p>
+          </div>
+          <div class="form-group" id="divVitalStatisticsWithHeader">
+            <h4 style="display: inline-block;">Vitals &nbsp; <i class="fa fa-caret-down" id="iVitalStatistics" (click)="toggleVitalStatistics(this)"></i> &nbsp; <button type="button" class="btn btn-primary my-4 collapse" data-toggle="modal" data-target="#modal-form-addvitals" id="Btnaddvitals" data-backdrop="static" data-keyboard="false">Add Vitals &nbsp; <i class="fa fa-plus"></i></button> </h4> 
+            <label class="switch" style="float: right;">
+              <input type="checkbox" class="toggle" id="togBtnVitals" [(ngModel)]="IsDetailsCheckedVitals" (change)="checkValueVitals($event)">
+              <div class="slider round">
+               <!--ADDED HTML -->
+               <span class="on" value="checked">Regular</span>
+               <span class="off">&nbsp;Smart</span>
+               <!--END-->
+              </div>
+             </label>
+            <div class="form-group" id="divVitalStatistics">
+              <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                <tbody>
+                  <ng-container *ngFor="let items of allVitalsList">
+                    <tr style="background: #f0f5f5;">
+                      <td (click)="items.expanded = !items.expanded">
+                        {{items.VitalName}}
+                      </td>
+                      <td (click)="items.expanded = !items.expanded">
+                        {{items.Reading}}&nbsp;{{items.MeasurementUnit}} <br> <p style="font-size: small;"> Standard Reading: &nbsp; {{items.Range}} </p>
+                      </td>
+                      <td>
+                        <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                          <li class="nav-item dropdown">
+                            <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                              style="padding-top: 0rem;">
+    
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                  style="color:#0505a7;"></path>
+                              </svg>
+                              <span class="nav-link-inner--text"></span>
+                            </a>
+                            <div class="dropdown-menu" style="position:fixed;">
+                              <a [routerLink]="" (click)="loadSpecificVital(items.VitalID,items.Reading,items.MeasurementUnit)" class="dropdown-item"><span
+                                class="btn-inner--icon" style="color: black;"><i
+                                  class="fa fa-edit"></i></span>&nbsp;Edit</a>
+                            <a [routerLink]="" (click)="deleteVitals(items.VitalID)" class="dropdown-item"><span
+                                class="btn-inner--icon" style="color: red;"><i
+                                  class="fa fa-times"></i></span>&nbsp;Delete</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <ng-container *ngIf="items.expanded">
+                      <tr>
+                        <td> 
+                          <a [routerLink]="" (click)="loadSpecificVital(items.VitalID,items.Reading,items.MeasurementUnit)" class="dropdown-item"><span
+                            class="btn-inner--icon" style="color: black;"><i
+                              class="fa fa-edit"></i></span>&nbsp;Edit</a>
+                        </td>
+                        <td> 
+                          <a [routerLink]="" (click)="deleteVitals(items.VitalID)" class="dropdown-item"><span
+                            class="btn-inner--icon" style="color: red;"><i
+                              class="fa fa-times"></i></span>&nbsp;Delete</a>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </ng-container>
+                  
+                  <tr style="background: #FFFFFF;" *ngIf = "!allVitalsList">
+                    <td> <p style="font-size:medium; font-weight: bold; color: red;"> No Data Available. </p></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="form-group collapse" id="divVitalStatisticsDetails">
+              <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                <tbody>
+                  <ng-container *ngFor="let items of allVitalsList">
+                    <tr style="background: #f0f5f5;">
+                      <td>
+                        {{items.VitalName}}<br>{{items.Reading}}&nbsp;{{items.MeasurementUnit}}
+                        <br><p style="font-size: small;"> Standard Reading: &nbsp; {{items.Range}} </p>
+                      </td>
+                      <td>
+                        <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                          <li class="nav-item dropdown">
+                            <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                              style="padding-top: 0rem;">
+    
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                  style="color:#0505a7;"></path>
+                              </svg>
+                              <span class="nav-link-inner--text"></span>
+                            </a>
+                            <div class="dropdown-menu" style="position:fixed;">
+                              <a [routerLink]="" (click)="loadSpecificVital(items.VitalID,items.Reading,items.MeasurementUnit)" class="dropdown-item"><span
+                                class="btn-inner--icon" style="color: black;"><i
+                                  class="fa fa-edit"></i></span>&nbsp;Edit</a>
+                            <a [routerLink]="" (click)="deleteVitals(items.VitalID)" class="dropdown-item"><span
+                                class="btn-inner--icon" style="color: red;"><i
+                                  class="fa fa-times"></i></span>&nbsp;Delete</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <app-chart [name]="items.VitalID" [data]="items"></app-chart>
+                      </td>
+                      <td></td>
+                  </tr>
+                  </ng-container>
+                  
+                </tbody>
+              </table>
+            </div>
+            <div class="rxbutton" style="float: right;">
+              <a data-toggle="modal" data-target="#modal-form-addvitals" data-backdrop="static" data-keyboard="false" (click)="showMyVisits()"><i class="fa fa-plus-square"></i> Add Vitals</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" id="divDoctorInfo">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+            <h3><i class="fa fa-user-md" style="color: orangered;"></i>&nbsp;Doctor's Information <i class="fa fa-caret-down" id="iDoctorInfo" (click)="toggleDoctorInfo(this)"></i> </h3>
+            
+          </div>
+          <div class="form-group">
+            <p><b *ngIf="DoctorName">Doctor's Name: &nbsp;</b> {{DoctorName}} <br *ngIf="DoctorName">
+              <b *ngIf="DoctorDepartment">Department: &nbsp;</b> {{DoctorDepartment}} <br *ngIf="DoctorDepartment"> 
+              <b *ngIf="DoctorDesignation">Designation: &nbsp;</b> {{DoctorDesignation}} <br *ngIf="DoctorDesignation">  
+              <b *ngIf="DoctorSpecialization">Specialization: &nbsp;</b> {{DoctorSpecialization}} <br *ngIf="DoctorSpecialization"> 
+              <b *ngIf="BMDCRegistrationNo">BMDC Registration No: &nbsp;</b> {{BMDCRegistrationNo}} <br *ngIf="BMDCRegistrationNo"> 
+              <b *ngIf="ChemberName">Chember: &nbsp;</b> {{ChemberName}} <br *ngIf="ChemberName"> 
+              <b *ngIf="Address1">Chember Address: &nbsp;</b> {{Address1}} <br *ngIf="Address1"> 
+              <b *ngIf="ContactNo">Contact No: &nbsp;</b> {{ContactNo}} </p>
+          </div>
+          <div class="form-group">
+            <p *ngIf="WaitingTime > 0"><b>Waiting Time:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{WaitingTime}} &nbsp; minutes</p>
+            <p *ngIf="ConsultingTime > 0"><b>Consulting Time:</b> &nbsp; {{ConsultingTime}} &nbsp; minutes</p>
+          </div>
+          <div class="row" style="float: right;">
+            <ul class="navbar-nav navbar-nav-hover" style="float: right;">
+              <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
+                  <a style="display: inline-block;
+                  color: #000;
+                  text-align: center;
+                  padding: 10px;
+                  font-size: smaller;
+                  font-weight: 600;
+                  text-decoration: none;
+                  border:0px solid #000152;
+                  border-radius: 30px;
+                  background-color: #e6ecff;
+                  margin: 5px;
+                  margin-top: 5px;" data-toggle="dropdown" role="button">
+                    <i class="fa fa-plus-square"></i> Add
+                  </a>
+                <div class="dropdown-menu" style="position:fixed;">
+                  <a [routerLink]="" data-toggle="modal" data-target="#modal-form-addwaitingtime" data-backdrop="static" data-keyboard="false" class="dropdown-item"><span
+                    class="btn-inner--icon" style="color: green;"><i
+                      class="fa fa-clock-o"></i></span>&nbsp;Waiting Time</a>
+                <a [routerLink]="" data-toggle="modal" data-target="#modal-form-addconsultingtime" data-backdrop="static" data-keyboard="false" class="dropdown-item"><span
+                    class="btn-inner--icon" style="color: blue;"><i
+                      class="fa fa-user-md"></i></span>&nbsp;Consulting Time</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="rxbutton">
+            <!--<a data-toggle="modal" data-target="#modal-form-updatecost" data-backdrop="static" data-keyboard="false"><i class="fa fa-plus-square"></i> Modify Time</a>-->
+          </div>
+          <div class="row">
+            <div class="rxbutton">
+              <a data-toggle="modal" data-target="#modal-form-share" data-backdrop="static" data-keyboard="false" (click)="showMyDoctors()"><i class="fa fa-user-md"></i> My Doctors</a> 
+              <a data-toggle="modal" data-target="#modal-form-myvisit" data-backdrop="static" data-keyboard="false" (click)="showMyVisits()"><i class="fa fa-file-text-o"></i> My Visits</a>
+            </div>
+          </div>
+          <!-- <h4 class="">Similar Specialists</h4>
+          <div class="cardswap-container">
+            <div class="cardswap">
+              <div class="profcard">
+                <img src="http://innovationxl-001-site2.gtempurl.com/photos/user.png" alt="John" style="width:80%">
+                <h1>Dr. X</h1>
+                <p class="title">MBBS, MD, FCPS (UK)</p>
+                <p>General Consultant</p>
+                <p>United Hospital</p>
+              </div>
+            </div>
+            <div class="cardswap">
+              <div class="profcard">
+                <img src="http://innovationxl-001-site2.gtempurl.com/photos/user.png" alt="John" style="width:80%">
+                <h1>Dr. X</h1>
+                <p class="title">MBBS, MD, FCPS (UK)</p>
+                <p>General Consultant</p>
+                <p>United Hospital</p>
+              </div>
+            </div>
+            <div class="cardswap">
+              <div class="profcard">
+                <img src="http://innovationxl-001-site2.gtempurl.com/photos/user.png" alt="John" style="width:80%">
+                <h1>Dr. X</h1>
+                <p class="title">MBBS, MD, FCPS (UK)</p>
+                <p>General Consultant</p>
+                <p>United Hospital</p>
+              </div>
+            </div>
+            <div class="cardswap">
+              <div class="profcard">
+                <img src="http://innovationxl-001-site2.gtempurl.com/photos/user.png" alt="John" style="width:80%">
+                <h1>Dr. X</h1>
+                <p class="title">MBBS, MD, FCPS (UK)</p>
+                <p>General Consultant</p>
+                <p>United Hospital</p>
+              </div>
+            </div>
+    </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" id="divMedicine">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+              <h3 style="display: inline-block;"><i class="fa fa-medkit" style="color: rgb(128, 145, 145);"></i>&nbsp;Medicine</h3>
+            <label class="switch" style="float: right;">
+                <input type="checkbox" class="toggle" id="togBtnMedicine" [(ngModel)]="IsPriceChecked" (change)="checkValue($event)">
+                <div class="slider round">
+                 <!--ADDED HTML -->
+                 <span class="on" value="checked">Regular</span>
+                 <span class="off">&nbsp;Smart</span>
+                 <!--END-->
+                </div>
+               </label>
+          </div>
+          <div class="form-group" style="float: right; margin-top: -20px; display: none;" id="divBackToSummary">
+            <button type="button" class="btn" style="border-radius: 30px; background: royalblue; color: white;" (click)="onCLickMenu('Summary')">Back to Summary &nbsp; <i class="fa fa-external-link"></i></button>
+          </div>
+          <div class="form-group" id="divMedicineRx" style="font-size: small; font-weight:600;" >
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <ng-container *ngFor="let items of allFileList">
+                  <tr style="background: #f0f5f5;">
+                    <td (click)="items.expanded = !items.expanded">
+                      {{items.MedicinName}} <br> <strong style="font-size: x-small; font-weight: 600;">{{items.Dose}}</strong> 
+                    </td>
+                    <td  (click)="items.expanded = !items.expanded">
+                      {{items.Duration}} <br> {{items.Frequency}}
+                    </td>
+                    <td>
+                      {{items.Notes}}
+                    </td>
+                    <td>
+                      <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                              style="padding-top: 0rem;">
+    
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                  style="color:#0505a7;"></path>
+                              </svg>
+                              <span class="nav-link-inner--text"></span>
+                            </a>
+                          <div class="dropdown-menu" style="position:fixed;">
+                            <a [routerLink]="" data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                            data-keyboard="false" (click)="showalternativemedicine(items.ProductID)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: rgb(0, 32, 139);"><i
+                                class="fa fa-tag"></i></span>&nbsp;Alternative Medicine</a>
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                              data-keyboard="false" (click)="showpricecomparisonmedicine(items.ProductID)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-window-restore"></i></span>&nbsp;Compare Price</a>
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-medicineinfo" data-backdrop="static" data-keyboard="false" (click)="showMedicineInfo(items.ProductID)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-info-circle"></i></span>&nbsp;Drug Info</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="collapse">
+                      <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1"
+                        [url]="'http://epsilonlimited.com/'" [image]="items.FilePath" [autoSetMeta]="true">
+                      </share-buttons>
+                    </td>
+                  </tr>
+                  <ng-container *ngIf="items.expanded">
+                    <tr>
+                      <td> 
+                        <a data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                        data-keyboard="false" (click)="showalternativemedicine(items.ProductID)"><span
+                        style="color: rgb(0, 32, 139);"><i
+                        class="fa fa-tag"></i></span>&nbsp;Alternative</a>
+                      </td>
+                      <td> 
+                        <a data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                        data-keyboard="false" (click)="showpricecomparisonmedicine(items.ProductID)"><span
+                         style="color: darkcyan;"><i
+                        class="fa fa-window-restore"></i></span>&nbsp;Compare</a>
+                      </td>
+                      <td> 
+                        <a data-toggle="modal" data-target="#modal-form-medicineinfo" data-backdrop="static" data-keyboard="false" (click)="showMedicineInfo(items.ProductID)" class="dropdown-item"><span
+                           style="color: darkcyan;"><i
+                            class="fa fa-info-circle"></i></span>&nbsp;Info</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-group" id="divMedicineCostDetails" style="display: none; font-size: small; font-weight:600;">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <ng-container *ngFor="let items of allFileList">
+                  <tr style="background: #f0f5f5;">
+                    <td (click)="items.expanded = !items.expanded">
+                      <label style="font-size:small;font-weight: 700;">{{items.MedicinName}} &nbsp;</label> <label style="font-size: x-small;font-weight: 500;"> {{items.Dose}}</label> 
+                      
+                      <br><br>{{items.DurationInDays}} Days | <strong style="font-size: x-small; font-weight: 600;">({{items.DoseNumber}} per day)</strong> 
+                      <br><br><label style="font-size: small;font-weight: 600;">{{items.Manufacturer}}</label>
+                    </td>
+                    <td (click)="items.expanded = !items.expanded">
+                      <strong style="font-size: x-small; font-weight: 600;">Unit Cost</strong> <br> ৳ {{items.UnitCost}} <br><strong style="font-size: x-small; font-weight: 600;">Total Qty</strong> {{items.TotalQuantity}}  <br> <strong style="font-size: x-small; font-weight: 600;">Total Cost</strong> <br> ৳ {{items.TotalCost}}
+                    </td>
+                    <td>
+                      <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                              style="padding-top: 0rem;">
+    
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                  style="color:#0505a7;"></path>
+                              </svg>
+                              <span class="nav-link-inner--text"></span>
+                            </a>
+                          <div class="dropdown-menu" style="position:fixed;">
+                            <a [routerLink]="" data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                            data-keyboard="false" (click)="showalternativemedicine(items.MedicineName)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: rgb(0, 32, 139);"><i
+                                class="fa fa-tag"></i></span>&nbsp;Alternative Medicine</a>
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                              data-keyboard="false" (click)="showpricecomparisonmedicine(items.ProductID)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-window-restore"></i></span>&nbsp;Compare Price</a>
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-medicineinfo" data-backdrop="static" data-keyboard="false" (click)="showMedicineInfo(items.ProductID)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-info-circle"></i></span>&nbsp;Drug Info</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="collapse">
+                      <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1"
+                        [url]="'http://epsilonlimited.com/'" [image]="items.FilePath" [autoSetMeta]="true">
+                      </share-buttons>
+                    </td>
+                  </tr>
+                  <ng-container *ngIf="items.expanded">
+                    <tr>
+                      <td> 
+                        <a data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                        data-keyboard="false" (click)="showalternativemedicine(items.ProductID)"><span
+                        style="color: rgb(0, 32, 139);"><i
+                        class="fa fa-tag"></i></span>&nbsp;Alternative</a>
+                      </td>
+                      <td> 
+                        <a data-toggle="modal" data-target="#modal-form-alternativemedicine" data-backdrop="static"
+                        data-keyboard="false" (click)="showpricecomparisonmedicine(items.ProductID)"><span
+                         style="color: darkcyan;"><i
+                        class="fa fa-window-restore"></i></span>&nbsp;Compare</a>
+                      </td>
+                      <td> 
+                        <a data-toggle="modal" data-target="#modal-form-medicineinfo" data-backdrop="static" data-keyboard="false" (click)="showMedicineInfo(items.ProductID)" class="dropdown-item"><span
+                           style="color: darkcyan;"><i
+                            class="fa fa-info-circle"></i></span>&nbsp;Info</a>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                
+                <tr style="background: #e0ebeb;">
+                  <td>{{NoOfMedicine}} Medicine Given</td>
+                  <td> <p style="font-size: small;"> Total Cost: &nbsp;<strong style="font-weight: 600;color:darkblue;"> ৳ {{TotalMedicineCost}} </strong> </p></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <br>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" id="divInvestigation">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+            <h3 style="display: inline-block;"><i class="fa fa-heartbeat" style="color: rgb(1, 109, 1);"></i>&nbsp;Investigations</h3>
+            <label class="switch" style="float: right;">
+                <input type="checkbox" class="toggle" id="togBtnLab" [(ngModel)]="IsPriceCheckedLab" (change)="checkValueLab($event)">
+                <div class="slider round">
+                 <!--ADDED HTML -->
+                 <span class="on" value="checked">Regular</span>
+                 <span class="off">&nbsp;Smart</span>
+                 <!--END-->
+                </div>
+               </label>
+          </div>
+          <div class="form-group">
+            <ng-select id="ngcenter" [items]="allDiagonosticTestCenterList" 
+            bindLabel="Remarks" 
+            bindValue="CenterID" 
+            placeholder="Select test center..."
+            [(ngModel)]="selectedCenter" style="width: 100%;display: inline-block;" (change)="loadLabInvestigation()">
+           </ng-select>
+            
+          </div>
+          <div class="form-group">
+            <div class="labelinfo">
+              <p style="font-size:x-small;padding-left: 5px;color: #000;"><strong>Warning!</strong> Smart Rx provides information from third parties, including price and details. Smart Rx does not gurranty complete data accuracy.</p>
+            </div>
+          </div>
+          <div class="form-group collapse">
+            <div class="labelinfo">
+              <p style="font-size:x-small;padding-left: 5px;color: #000;"><strong>Info!</strong> Some text...</p>
+            </div>
+          </div>
+          <div class="form-group" *ngIf = "IsSelectedCenterExists" style="font-size: small; font-weight: 600;">
+            <div *ngIf = "SelectedCenterAddress">
+              <i class="fa fa-location-arrow"></i> &nbsp; {{SelectedCenterAddress}}
+            </div>
+            <div *ngIf = "SelectedCenterArea">
+              <i class="fa fa-map-marker"></i> &nbsp; {{SelectedCenterArea}}
+            </div>
+            <div *ngIf = "SelectedCenterMobileNo">
+              <i class="fa fa-mobile" style="color: #0505a7;"></i> &nbsp;&nbsp; {{SelectedCenterMobileNo}}
+            </div>
+            <div *ngIf = "SelectedCenterPhoneNo">
+              <i class="fa fa-phone-square" style="color: green;"> </i> &nbsp; {{SelectedCenterPhoneNo}}
+            </div>
+            <div *ngIf = "SelectedCenterWebAddress">
+              <i class="fa fa-internet-explorer" style="color: #0572F8;"></i> &nbsp; <a href="SelectedCenterWebAddress">{{SelectedCenterWebAddress}}</a>
+            </div>
+          </div>
+          <div class="form-group" style="float: right; margin-top: 0px; display: none;" id="divBackToSummaryFromLab">
+            <button type="button" class="btn" style="border-radius: 30px; background: royalblue; color: white;" (click)="onCLickMenu('Summary')">Back to Summary &nbsp; <i class="fa fa-external-link"></i></button>
+          </div>
+          <div class="form-group" id="divLab" style="font-size: small; font-weight:600;">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <ng-container *ngFor="let items of allLabListWithPrice">
+                  <tr style="background: #f0f5f5;">
+                    <td (click)="items.expanded = !items.expanded">
+                      {{items.Investigation}}
+                    </td>
+                    <td>
+                      <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                              style="padding-top: 0rem;">
+    
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                  style="color:#0505a7;"></path>
+                              </svg>
+                              <span class="nav-link-inner--text"></span>
+                            </a>
+                          <div class="dropdown-menu" style="position:fixed;">
+                            <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labcomparison" data-backdrop="static" data-keyboard="false" (click)="getCenterByKeyword()" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-cubes"></i></span>&nbsp;Compare Price</a>
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labinfo" data-backdrop="static" data-keyboard="false" (click)="showLabInfo(items.InvestigationID, items.Investigation)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-info-circle"></i></span>&nbsp;Test Info</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <ng-container *ngIf="items.expanded">
+                    <tr>
+                      <td> 
+                        <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labcomparison" data-backdrop="static" data-keyboard="false" (click)="getCenterByKeyword()" class="dropdown-item"><span
+                          class="btn-inner--icon" style="color: darkcyan;"><i
+                            class="fa fa-cubes"></i></span>&nbsp;Compare</a>
+                      </td>
+                      <td> 
+                        <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labinfo" data-backdrop="static" data-keyboard="false" (click)="showLabInfo(items.InvestigationID, items.Investigation)" class="dropdown-item"><span
+                          class="btn-inner--icon" style="color: darkcyan;"><i
+                            class="fa fa-info-circle"></i></span>&nbsp;Info</a>
+                      </td>
+                    </tr>
+                </ng-container>                
+                </ng-container>
+                <tr style="background: #FFFFFF;" *ngIf = "!allLabListWithPrice">
+                  <td> <p style="font-size:medium; font-weight: bold; color: red;"> No Data Available. </p></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="form-group" id="divLabWithPrice" style="font-size: smaller; font-weight:600;display: none;">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <ng-container *ngFor="let items of allLabListWithPrice">
+                  <tr style="background: #f0f5f5;">
+                    <td (click)="items.expanded = !items.expanded"> 
+                      <strong style="font-size: x-small; font-weight: 600;">Test</strong> {{items.GenericName}} <br>
+                      <strong style="font-size: x-small; font-weight: 600;">Description</strong> {{items.GenericDescription}} <br>
+                      <strong style="font-size: x-small; font-weight: 600;">Center</strong> {{items.CenterName}} <br>
+                      <!--<strong style="font-size: x-small; font-weight: 600;">Specimen</strong> {{items.Specimen}} <br>
+                      <strong style="font-size: x-small; font-weight: 600;">Test Schedule</strong> {{items.Schedule}} <br>
+                      <strong style="font-size: x-small; font-weight: 600;">Report Delivery</strong> {{items.ReportDeliveryTime}}-->
+                    </td>
+                    <td (click)="items.expanded = !items.expanded">
+                      <strong style="font-size: x-small; font-weight: 600; font-style: italic;">Center Price</strong> <br> ৳ {{items.Price}} <br>
+                      <strong style="font-size: x-small; font-weight: 600; font-style: italic;">Price Range <br> ৳ {{items.PriceRange}} </strong>
+                      <!--<strong style="font-size: x-small; font-weight: 600; font-style: italic;">Avarage</strong> <br> ৳ {{items.PriceAvarage}}-->
+                    </td>
+                    <td>
+                      <ul class="navbar-nav navbar-nav-hover" style="align-items: center;">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link no-caret" data-toggle="dropdown" role="button"
+                              style="padding-top: 0rem;">
+    
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                                  style="color:#0505a7;"></path>
+                              </svg>
+                              <span class="nav-link-inner--text"></span>
+                            </a>
+                          <div class="dropdown-menu" style="position:fixed;">
+                            <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labcomparison" data-backdrop="static" data-keyboard="false" (click)="getCenterByKeyword()" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-cubes"></i></span>&nbsp;Compare Price</a>
+                          <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labinfo" data-backdrop="static" data-keyboard="false" (click)="showLabInfo(items.InvestigationID, items.Investigation)" class="dropdown-item"><span
+                              class="btn-inner--icon" style="color: darkcyan;"><i
+                                class="fa fa-info-circle"></i></span>&nbsp;Test Info</a>
+                          </div>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <ng-container *ngIf="items.expanded">
+                    <tr>
+                      <td> 
+                        <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labcomparison" data-backdrop="static" data-keyboard="false" (click)="getCenterByKeyword()" class="dropdown-item"><span
+                          class="btn-inner--icon" style="color: darkcyan;"><i
+                            class="fa fa-cubes"></i></span>&nbsp;Compare</a>
+                      </td>
+                      <td> 
+                        <a [routerLink]="" data-toggle="modal" data-target="#modal-form-labinfo" data-backdrop="static" data-keyboard="false" (click)="showLabInfo(items.InvestigationID, items.Investigation)" class="dropdown-item"><span
+                          class="btn-inner--icon" style="color: darkcyan;"><i
+                            class="fa fa-info-circle"></i></span>&nbsp;Info</a>
+                      </td>
+                    </tr>
+                </ng-container>
+                </ng-container>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" id="divAdvice">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+            <h3><i class="fa fa-check-square" style="color: rgb(82, 252, 3);"></i>&nbsp;Advice</h3>
+          </div>
+          <div class="form-group">
+            <h5 *ngIf="Advice">Advice</h5>
+            <p *ngIf="Advice">{{Advice}}</p>
+            <h5 *ngIf="Restrictions">Restrictions</h5>
+            <p *ngIf="Restrictions">{{Restrictions}}</p>
+            <p *ngIf = "!Restrictions && !Advice" style="font-size:medium; font-weight: bold; color: red;"> No Data Available. </p>
+            <button type="button" class="btn btn-link my-4" style="float: right;" (click)="onClickBlog()">Go to Blog &nbsp; <i class="fa fa-external-link"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center" id="divFavourites" *ngIf="myFavouriteMedicines || myFavouriteLabs">
+    <div class="col-lg-12">
+      <div class="card ">
+        <div class="card-body">
+          <div class="form-group">
+            <h3><i class="fa fa-heart" style="color: rgb(180, 0, 0);"></i>&nbsp;My Favourites</h3>
+          </div>
+          <div id="favouriteMedicine" *ngIf="myFavouriteMedicines">
+            <div class="form-group">
+              <h5><i class="fa fa-medkit" style="color: green;"></i>&nbsp;Favourite Medicines</h5>
+            </div>
+            <div class="form-group">
+              <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                <tbody>
+                  <tr *ngFor="let items of myFavouriteMedicines" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                    <td>
+                      <label style="font-size: x-small;font-weight: 500;">{{items.Category}}</label> &nbsp; <label style="font-size:small;font-weight: 700;">{{items.ProductName}} &nbsp;</label> <label style="font-size: x-small;font-weight: 500;"> {{items.Strength}}</label> 
+                      
+                      <br><label style="font-size: small;font-weight: 600;">{{items.Manufacturer}}</label>
+                    </td>
+                    <td>
+                      <label style="font-size: small;font-weight: 500;">৳ {{items.Price}}</label>
+                      <br><p style="font-size:x-small;">Unit Price</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+  
+            </div>
+          </div>
+          <div id="favouriteLab" *ngIf="myFavouriteLabs">
+            <div class="form-group">
+              <h5><i class="fa fa-hospital-o" style="color: blueviolet;"></i>&nbsp;Favourite Diagonostic Centers</h5>
+            </div>
+            <div class="form-group">
+              <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                <tbody>
+                  <tr *ngFor="let items of myFavouriteLabs" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                    <td>
+                      <label style="font-size:small;font-weight: 700;">{{items.CenterName}} </label> 
+                      
+                      <br><label style="font-size: small;font-weight: 600;">{{items.District}}</label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="floatReport">
+    <div class="row justify-content-center" style="background: transparent; border-color: transparent;"> 
+      <div class="col-lg-12" style="background: transparent; border-color: transparent;">
+        <div class="card " style="background: transparent; border-color: transparent;">
+          <div class="card-body" style="background: transparent; border-color: transparent;">
+            <div class="form-group" style="background: transparent; border-color: transparent;">
+              <button type="button" class="btn" style="float: right;height: 50%;border-radius: 30px;background-color: darkorange;" data-toggle="modal" data-target="#modal-form-report" data-backdrop="static" data-keyboard="false">Report &nbsp; <i class="fa fa-external-link"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+          </div>
+         
+          
+        </div>
+      </div>
+    </div>
+    
+      
+  </section>
+</main>
+  
+
+<div class="modal fade" id="modal-form-share" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0" style="background: #fff;">
+      <div class="card border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="divContent">
+          <div class="form-group">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <ng-container *ngFor="let items of myDoctors">
+                <tr style="background: #f0f5f5;" (click)="items.expanded = !items.expanded">
+                  <td style="width: 30%;">
+                    <img src="http://innovationxl-001-site2.gtempurl.com/photos/user.png" alt="Doctor" style="width: 100%;">
+                  </td>
+                  <td style="width: 70%; font-size: small; font-weight: bold;">
+                    {{items.DoctorsName}} <br> {{items.Specialization}} <br> {{items.ChemberName}}
+                  </td>
+                  <td>
+                  <td class="collapse" style="width: 20%;">
+                    <i class="fa fa-bars" id="btnVisit" (click)="items.expanded = !items.expanded"></i>
+                  </td>
+                </tr>
+                <ng-container *ngIf="items.expanded">
+                  <tr *ngFor="let details of findVisitDetailsByDoctorsName(items)">
+                    <td td style="width: 30%;font-size: small; font-weight: bold;"> Visit Date: </td>
+                    <td td style="width: 50%;font-size: small; font-weight: bold;"> {{details.DateOfVisit}} </td>
+                    <td td style="width: 20%;font-size: small; font-weight: bold;"> <u>Rx</u> </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+                <br>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="text-center">
+          <!-- <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1" [url]=""
+            [image]="SharedImageFilePath" [autoSetMeta]="true"></share-buttons> -->
+          <button #closeModalTag id="BtnCloseViewModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+
+<div class="modal fade" id="modal-form-myvisit" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card border-0 mb-0">
+        <div class="card-header pb-3" style="background-color: #e6e6ff">
+          <div class="text-muted text-center mb-3">
+            <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Your Visits
+            </h3>
+          </div>
+        </div>
+        <div class="card-body px-lg-6 py-lg-6" id="">
+          <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="form-group">
+                  <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                    <tr style="font-size: small;">
+                      <th scope="col">Date</th>
+                      <th scope="col">Doctor</th>
+                      <th scope="col">Chember</th>
+                      <th scope="col">Rx</th>
+                    </tr>
+                    <tbody>
+                      <tr *ngFor="let items of myVisits" style="background: #f0f5f5; font-size: small;font-weight: 700;">
+                        <td>
+                           {{items.DateOfVisit}}
+                        </td>
+                        <td>
+                           {{items.DoctorsName}} ({{items.Specialization}})
+                        </td>
+                        <td>
+                           {{items.ChemberName}}
+                        </td>
+                        <td>
+                          <u>View Rx</u>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <!-- <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1" [url]=""
+            [image]="SharedImageFilePath" [autoSetMeta]="true"></share-buttons> -->
+          <button #closeModalTag id="BtnCloseMyVisitModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+
+
+<div class="modal fade" id="modal-form-addnotes" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card bg-secondary shadow border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h4>Add Note</h4>
+                  <div class="form-group" style="width: 100%;">
+                    <textarea id="txtNote" style="width: 100%;padding: 5px; border-radius: 10px;border:2px solid #d4d2cd">{{Note}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="updateUserInput()">Save &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseAddNotesModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-report" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none; background-color: white;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document" style="background-color: white;">
+  <div class="modal-content" style="background-color: white;">
+    <div class="modal-body p-0" style="background-color: white;">
+      <div class="card bg-secondary shadow border-0 mb-0" style="background-color: white;">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="" style="background-color: white;">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h5>Screen</h5>
+                  <div class="form-group" style="width: 100%;">
+                    <select id="ScreenReport" class="form-control">
+                      <option value="SmartRx">Smart Rx</option>
+                    </select>
+                  </div>
+                  <h5>What problem are you facing?</h5>
+                  <div class="form-group" style="width: 100%;">
+                    <textarea id="txtReport" style="width: 100%;padding: 5px; border-radius: 10px;border:2px solid #d4d2cd">{{Note}}</textarea>
+                  </div>
+                  <div class="form-group collapse">
+                    <div class="labelinfo">
+                      <p style="font-size:x-small;padding-left: 5px;color: #000;"><strong>Greetings!</strong> Your feedback is important for us.</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="onClickReport()">Send Report &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseReportModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modal-form-addvisitfee" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h4>Update Cost</h4>
+                  <div class="form-group" style="width: 100%;">
+                    <div class="form-group">
+                      <p><b>Visit Fee: </b>&nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtVisitFee',100)"></i> &nbsp; <input type="text" id="txtVisitFee" style="font-size:medium;font-weight: 600;border-radius: 0px;" value={{VisitFee}} /> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtVisitFee',100)"></i> &nbsp; BDT</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="updateUserInput()" >Update &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseVisitFeeModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-addtransportcost" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h4>Update Transport Cost</h4>
+                  <div class="form-group" style="width: 100%;">
+                    <div class="form-group">
+                      <p><b>Cost: </b>&nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtTransportCost',50)"></i> &nbsp; <input type="text" id="txtTransportCost" style="font-size:medium;font-weight: 600;border-radius: 0px;" value={{TransportCost}} /> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtTransportCost',50)"></i> &nbsp; BDT</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="updateUserInput()">Update &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseAddTransportCostModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-addwaitingtime" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h4>Update Waiting Time</h4>
+                  <div class="form-group" style="width: 100%;">
+                    <div class="form-group">
+                      <p><i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtWaitingTime',5)"></i> &nbsp; <input type="text" id="txtWaitingTime" style="font-size:medium;font-weight: 600;border-radius: 0px;" value={{WaitingTime}} /> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtWaitingTime',5)"></i> &nbsp; minutes</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="updateUserInput()">Update &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseAddWaitingTimeModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-addconsultingtime" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h4>Update Waiting Time</h4>
+                  <div class="form-group" style="width: 100%;">
+                    <div class="form-group">
+                      <p><i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtConsultingTime',5)"></i> &nbsp; <input type="text" id="txtConsultingTime" value={{ConsultingTime}} style="font-size:medium;font-weight: 600;border-radius: 0px;"/> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtConsultingTime',5)"></i> &nbsp; minutes</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="updateUserInput()">Update &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseAddConsultingTimeModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modal-form-medicineinfo" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="card">
+        
+        <div class="">
+          <div style="background: #e0e0eb; padding: 5px;">
+            
+            <div id="container">
+              <div class="content">
+                  <div class="formElements" style="display:inline-block; ">
+                      <label style="font-size:x-large;font-weight: bold;">{{ProductName}} &nbsp;</label>
+                  </div>
+                  <div class="formElements" style="display:inline-block;">
+                    <label style="font-size: x-small;font-weight: bold;"> {{Strength}}</label>
+                  </div>
+              </div>
+              <div class="content" style="margin-top: -10px;">
+                <div class="formElements" style="display:inline-block;">
+                  <label style="font-size: smaller;">{{Category}}</label>
+                </div>
+            </div>
+            <div class="content" style="margin-top: -10px;">
+              <div class="formElements" style="display:inline-block;">
+                <label style="font-size: smaller;font-weight: bold;">{{Generic}}</label>
+              </div>
+          </div>
+          <div class="content" style="margin-top: -10px;">
+            <div class="formElements" style="display:inline-block;">
+              <label style="font-size: small;font-weight: bold;">{{Manufacturer}}</label>
+            </div>
+        </div>
+          </div>
+          </div>
+          <div>
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of faqList" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 700;">
+                  <td>
+                    <div class="content" style="border: 0px solid #e0e0eb;padding: 5px;">
+                      <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo(items.Ordering)">
+                        <label style="font-size: small;">{{items.FAQQuestion}}</label><label style="float: right;"><i  id=i{{items.Ordering}} class="fa fa-caret-down"></i></label>
+                      </div>
+                      <div class="formElements" id=div{{items.Ordering}} style="display:none;">
+                        <label style="font-size: x-small;">{{items.FAQAnswer}}</label>
+                      </div>
+                  </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="collapse">
+              <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+                <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedIndication')">
+                  <label style="font-size: large;">Indication</label><label style="float: right;"><i id="iMedIndication" class="fa fa-caret-down"></i></label>
+                </div>
+                <div class="formElements" id="divMedIndication" style="display:none;">
+                  <label style="font-size: small;">{{Indication}}</label>
+                </div>
+            </div>
+            <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+              <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedPharmacology')">
+                <label style="font-size: large;">Pharmacology</label><label style="float: right;"><i id="iMedPharmacology" class="fa fa-caret-down"></i></label>
+              </div>
+              <div class="formElements" id="divMedPharmacology" style="display:none;">
+                <label style="font-size: small;">{{Pharmacology}}</label>
+              </div>
+          </div>
+  
+          <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+            <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedAdministration')">
+              <label style="font-size: large;">Administration</label><label style="float: right;"><i id="iMedAdministration" class="fa fa-caret-down"></i></label>
+            </div>
+            <div class="formElements" id="divMedAdministration" style="display:none;">
+              <label style="font-size: small;">{{Administration}}</label>
+            </div>
+        </div>
+  
+        <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+          <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedContradication')">
+            <label style="font-size: large;">Contradication</label><label style="float: right;"><i id="iMedContradication" class="fa fa-caret-down"></i></label>
+          </div>
+          <div class="formElements" id="divMedContradication" style="display:none;">
+            <label style="font-size: small;">{{Contradication}}</label>
+          </div>
+      </div>
+  
+      <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+        <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedSideEffects')">
+          <label style="font-size: large;">Side Effects</label><label style="float: right;"><i id="iMedSideEffects" class="fa fa-caret-down"></i></label>
+        </div>
+        <div class="formElements" id="divMedSideEffects" style="display:none;">
+          <label style="font-size: small;">{{SideEffects}}</label>
+        </div>
+    </div>
+  
+    <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+      <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedPrecautionsAndWarnings')">
+        <label style="font-size: large;">Precautions & Warnings</label><label style="float: right;"><i id="iMedPrecautionsAndWarnings" class="fa fa-caret-down"></i></label>
+      </div>
+      <div class="formElements" id="divMedPrecautionsAndWarnings" style="display:none;">
+        <label style="font-size: small;">{{PrecautionsAndWarnings}}</label>
+      </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedPregnancyAndLactation')">
+      <label style="font-size: large;">Pregnancy & Lactation</label><label style="float: right;"><i id="iMedPregnancyAndLactation" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedPregnancyAndLactation" style="display:none;">
+      <label style="font-size: small;">{{PregnancyAndLactation}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedModeOfAction')">
+      <label style="font-size: large;">Mode of Action</label><label style="float: right;"><i id="iMedModeOfAction" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedModeOfAction" style="display:none;">
+      <label style="font-size: small;">{{ModeOfAction}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedInteraction')">
+      <label style="font-size: large;">Interaction</label><label style="float: right;"><i id="iMedInteraction" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedInteraction" style="display:none;">
+      <label style="font-size: small;">{{Interaction}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedOverdoseEffects')">
+      <label style="font-size: large;">Overdose Effects</label><label style="float: right;"><i id="iMedOverdoseEffects" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedOverdoseEffects" style="display:none;">
+      <label style="font-size: small;">{{OverdoseEffects}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedTherapeuticClass')">
+      <label style="font-size: large;">Therapeutic Class</label><label style="float: right;"><i id="iMedTherapeuticClass" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedTherapeuticClass" style="display:none;">
+      <label style="font-size: small;">{{TherapeuticClass}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedStorageConditions')">
+      <label style="font-size: large;">Storage Conditions</label><label style="float: right;"><i id="iMedStorageConditions" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedStorageConditions" style="display:none;">
+      <label style="font-size: small;">{{StorageConditions}}</label>
+    </div>
+  </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <button #closeModalTag id="BtnCloseMedicineInfoModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-alternativemedicine" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="card">
+        <div id="divAlternateMedicineWithoutPrice">
+          <div id="container" style="padding:5px;background: #e0e0eb;">
+            <div class="content">
+                <div class="formElements" style="display:inline-block; ">
+                    <label style="font-size:x-large;font-weight: bold;">{{SelectedMedicineName}} &nbsp;</label>
+                </div>
+                <div class="formElements" style="display:inline-block;">
+                  <label style="font-size: x-small;font-weight: bold;"> {{SelectedMedicineStrength}}</label>
+                </div>
+                <label class="switch" style="float: right;">
+                  <input type="checkbox" class="toggle" id="togBtnAlternateMed" [(ngModel)]="IsPriceCheckedAlternateMed" (change)="checkValueAlternateMed($event)">
+                  <div class="slider round">
+                   <!--ADDED HTML -->
+                   <span class="on" value="checked">Regular</span>
+                   <span class="off">&nbsp; Smart</span>
+                   <!--END-->
+                  </div>
+                 </label>
+            </div>
+            <div class="content" style="margin-top: -10px;">
+              <div class="formElements" style="display:inline-block;">
+                <label style="font-size: smaller;">{{SelectedMedicineCategory}}</label>
+              </div>
+          </div>
+          <div class="content" style="margin-top: -10px;">
+            <div class="formElements" style="display:inline-block;">
+              <label style="font-size: smaller;font-weight: bold;">{{SelectedMedicineGeneric}}</label>
+            </div>
+        </div>
+        <div class="content" style="margin-top: -10px;">
+          <div class="formElements" style="display:inline-block;">
+            <label style="font-size: small;font-weight: bold;">{{SelectedMedicineManufacturar}}</label>
+          </div>
+      </div>
+        </div>
+  
+        <div id="container">
+            <div class="content">
+              <h5 style="padding-left:5px; width: 100%;">Alternatives</h5>
+                <div class="form-group">
+                  <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                    <tbody>
+                      <tr *ngFor="let items of alternateMedicines | paginate: configMed" style="background: #f0f5f5; font-size: small;font-weight: 700;">
+                        <td>
+                          <label style="font-size:small;font-weight: 700;">{{items.ProductName}} &nbsp;</label> 
+                          <br> <label style="font-size: x-small;font-weight: 500;margin-top: -10px;">{{items.Category}}</label>
+                          <br><label style="font-size: x-small;font-weight: 500;margin-top: -10px;"> {{items.Strength}}</label>
+                          <br><label style="font-size: small;font-weight: 600;margin-top: -10px;">{{items.Manufacturer}}</label>
+                        </td>
+                        <td>
+                          <td *ngIf="items.IsFavourite">
+                            <i class="fa fa-heart fa-lg" style="color: red;" (click)="addToFavourite(items.ProductID,'','','','')"></i>
+                          </td>
+                          <td *ngIf="items.IsNotFavourite">
+                            <i class="fa fa-heart fa-lg" style="color:darkgrey;" (click)="addToFavourite(items.ProductID,'','','','')"></i>
+                          </td>
+                      </tr>
+                      <pagination-controls (pageChange)="pageChangedMed($event)" style="font-size: smaller;font-weight: 600;padding: 5px;"></pagination-controls>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div id="divAlternateMedicineWithPrice" style="display: none;">
+          <div id="container" style="padding:5px;background: #e0e0eb;">
+            <div class="content">
+                <div class="formElements" style="display:inline-block; ">
+                    <label style="font-size:x-large;font-weight: bold;">{{SelectedMedicineName}} &nbsp;</label>
+                </div>
+                <div class="formElements" style="display:inline-block;">
+                  <label style="font-size: x-small;font-weight: bold;"> {{SelectedMedicineStrength}}</label>
+                </div>
+                <label class="switch" style="float: right;">
+                  <input type="checkbox" class="toggle" id="togBtnAlternateMed" [(ngModel)]="IsPriceCheckedAlternateMed" (change)="checkValueAlternateMed($event)">
+                  <div class="slider round">
+                   <!--ADDED HTML -->
+                   <span class="on" value="checked">Price Off</span>
+                   <span class="off">&nbsp; Price On</span>
+                   <!--END-->
+                  </div>
+                 </label>
+            </div>
+            <div class="content" style="margin-top: -10px;">
+              <div class="formElements" style="display:inline-block;">
+                <label style="font-size: smaller;">{{SelectedMedicineCategory}}</label>
+              </div>
+          </div>
+          <div class="content" style="margin-top: -10px;">
+            <div class="formElements" style="display:inline-block;">
+              <label class="switch" style="font-size: smaller;font-weight: bold;">{{SelectedMedicineGeneric}}</label>
+            </div>
+        </div>
+        <div class="content" style="margin-top: -10px;">
+          <div class="formElements" style="display:inline-block;">
+            <label style="font-size: small;font-weight: bold;">{{SelectedMedicineManufacturar}}</label>
+          </div>
+          <div class="content" style="margin-top: -10px;">
+              <div class="formElements" style="display:inline-block; ">
+                <label style="font-size: small;font-weight: bold;">Unit Price: ৳ {{SelectedMedicinePrice}}</label>
+              </div>
+              
+      </div>
+        </div>
+        </div>
+  
+        <div id="container">
+            <div class="content">
+              <span style="white-space: nowrap;">
+                <label style="display:inline-block; font-size: small;font-weight: bold; margin-top: 5px;">Show Total &nbsp; 
+                  <label class="switchsmall">
+                    <input type="checkbox" (change)="checkValueTotalMedicine($event)">
+                    <span class="slidersmall round"></span>
+                  </label>
+                  
+                </label>&nbsp;
+                <label style="float: right; font-size: small;font-weight: bold; margin-top: 5px;">Qt: &nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x collapse" (click)="increment('medQuantity',1)"></i> <input type="text" style="font-size:medium;font-weight: 600;" value="1" id="medQuantity" (change)="showpricecomparisonmedicine('N')"/> <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x collapse" (click)="decrease('medQuantity',1)"></i></label>
+              </span>
+
+              <span style="white-space: nowrap">
+                <label>Sort By</label> &nbsp;
+                <select id="sortMed" style="display:inline-block;background: #f0f5f5; border-radius: 20px; border-color: dimgrey; font-size: small;" class="" (change)="reloadMedicineListForSorting()" >
+                  <option value="PriceLH">Price: Low to High</option>
+                  <option value="PriceHL">Price: High to Low</option>
+                  <option value="Alphabetical">Alphabetical</option>
+                </select>
+              </span>
+              
+                <div class="form-group">
+                  <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+                    <tbody>
+                      <tr *ngFor="let items of alternateMedicines | paginate: configMed" style="background: #f0f5f5; font-size: small;font-weight: 700;">
+                        <td>
+                          <label style="font-size:small;font-weight: 700;">{{items.ProductName}} &nbsp;</label> 
+                          <br> <label style="font-size: x-small;font-weight: 500;">{{items.Category}}</label>
+                          <br><label style="font-size: x-small;font-weight: 500;"> {{items.Strength}}</label>
+                          <br><label style="font-size: small;font-weight: 600;">{{items.Manufacturer}}</label>
+                        </td>
+                        <td>
+                          <label style="font-size: small;font-weight: 500;">{{items.Price}}</label>
+                          <br><p style="font-size:x-small;">Unit Price</p>
+                        </td>
+                        <td *ngIf="items.IsSame"><i class="fa fa-check fa-lg" style="color: blue;"></i>
+                          <br><span style="color: blue;font-size: x-small;font-weight: 500;">Same Price</span>
+                        </td>
+                        <td *ngIf="items.IsCheaper"><i class="fa fa-arrow-down fa-lg" style="color: green;"></i>
+                          <br><span style="color: green;font-size: x-small;font-weight: 500;">{{items.CostDifference}}%</span>
+                          <br><span style="color: green;font-size: x-small;font-weight: 500;">৳ {{items.PriceDifference}}</span>
+                        </td>
+                        <td *ngIf="items.IsCostlier"><i class="fa fa-arrow-up fa-lg" style="color: red;"></i>
+                          <br><span style="color: red;font-size: x-small;font-weight: 500;">{{items.CostDifference}}%</span>
+                          <br><span style="color: red;font-size: x-small;font-weight: 500;">৳ {{items.PriceDifference}}</span>
+                        </td>
+                        <td *ngIf="items.IsFavourite">
+                          <i class="fa fa-heart fa-lg" style="color: red;" (click)="addToFavourite(items.ProductID,'','','','')"></i>
+                        </td>
+                        <td *ngIf="items.IsNotFavourite">
+                          <i class="fa fa-heart fa-lg" style="color:darkgrey;" (click)="addToFavourite(items.ProductID,'','','','')"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls (pageChange)="pageChangedMed($event)" style="font-size: smaller;font-weight: 600;padding: 5px;"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+            <div class="content">
+              
+              <div class="form-group">
+                <button #closeModalTag id="BtnCloseAlternativeMedicineModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+          </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-labcomparison" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="card">
+        
+        <div id="divSelectionModal">
+          <div style="background: #f0f5f5; padding: 5px;">
+            
+            <div id="container">
+              <div class="content">
+                <div class="form-group">
+                  <div class="labelinfo">
+                    <p style="font-size:x-small;padding-left: 5px;color: #000;"><strong>Info!</strong> Please select diagonostic centers for comparison...</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <ng-select id="recommendedCenterID" [items]="allDiagonosticTestCenterList" 
+                  bindLabel="Remarks" 
+                  bindValue="CenterID" 
+                  placeholder="Recommended center..." *ngIf="selectedCenter"
+                  [(ngModel)]="selectedCenter" style="width: 50%;display: inline-block;">
+                 </ng-select>
+                 <label style="float: right;">  
+                  <i class="fa fa-sort" style="color:darkslateblue;"></i> &nbsp;
+                  <select id="sortBy" style="background: #f0f5f5;border-radius: 20px;border-color: dimgrey;">
+                      <option value="name">Alphabetically</option>
+                      <option value="rating">Rating</option>
+                    </select>
+                   </label>
+                </div>
+        </div>
+          </div>
+
+          <div id="container">
+            <div class="content">
+              <div class="form-group">
+                <input type="text" id="SearchKeyword" style="width: 100%;text-align: left;font-size: small;font-weight: 600px;padding: 5px;" placeholder="Search.." (input) = "getCenterByKeyword()" />
+                
+              </div>
+      </div>
+        </div>
+          </div>
+          <div>
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of filteredDiagonosticTestCenterList | paginate: config" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                  <td> <input type="checkbox" style="width: 20px;" [(ngModel)]="items.IsSelected" (change)="selectCenter(items.IsSelected, items.CenterID, items.CenterName)"> </td>
+                  <td>
+                    <label style="font-size: small;">{{items.ShortName}}</label>
+                  </td>
+                  <td><img style="display: block; width: 40px; height: 45px;" src="https://drive.google.com/uc?export=view&id=1OIgqxL8SrjeCKMMViA8CEqt-jfm3nCAp" /></td>
+                  <td>
+                    <label style="font-size: small;">{{items.Area}}</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="pageChanged($event)" style="font-size: smaller;font-weight: 600;padding: 5px;"></pagination-controls>
+            
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of selectedCenterForComparison" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                  <td>
+                    <label style="font-size: small;">{{items.CenterName}}</label>
+                  </td>
+                  <td>
+                    <label style="font-size: small;"><i *ngIf="items.CenterName" style="color: red;" class="fa fa-times fa-2x" (click)="selectCenter(false,items.CenterID,items.CenterName)"></i></label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            
+
+          </div>
+          <div class="form-group" style="padding-left: 5px;">
+            <button #closeModalTag id="BtnCloseLabComparisonModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+            <button *ngIf="this.IsComparePossible" id="BtnCompareLabModal" type="button" class="btn btn-primary my-4" (click)="compareLab()">Compare</button>
+          </div>
+        </div>
+        <div id="divComparisonModal" class="collapse">
+          <div class="form-group" style="padding-left: 5px;">
+            <h5><i class="fa fa-plus-square-o" style="color: rgb(3, 223, 40);"></i>&nbsp;Overall Comparison</h5>
+          </div>
+          <div class="form-group">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of labComparisonOverall" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                  <td>
+                    <label style="font-size: small;">{{items.ShortName}}</label>
+                  </td>
+                  <td><ngb-rating [max]="5" [(rate)]="items.Rating" checkedcolor="#000" uncheckedcolor="black" [readonly]="true"></ngb-rating></td>
+                  <td>
+                    <label style="font-size: small;">{{items.Area}}</label>
+                  </td>
+                  <td>
+                    <label style="font-size: small;">{{items.YearEstablished}}</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-group" style="padding-left: 5px;">
+            <h5><i class="fa fa-money" style="color: rgb(183, 181, 197);"></i>&nbsp;Price Comparison</h5>
+          </div>
+          <div class="form-group">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of labComparisonTest; let i = index" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                  <td [attr.rowspan]="items.stateSpan" *ngIf="items.stateSpan">
+                    <label style="font-size: small;">{{items.TestName}}</label>
+                  </td>
+                  <td [ngClass]="{'color': items.IsMinimum }">
+                    <label style="font-size: small;">{{items.ShortName}}</label>
+                  </td>
+                  <td [ngClass]="{'color': items.IsMinimum }">
+                    <label style="font-size: small;">৳ {{items.Price}}</label>
+                  </td>
+                  <!--<td *ngIf="items.IsFavourite" [ngClass]="{'color': items.IsMinimum }">
+                    <i class="fa fa-heart fa-lg" style="color: red;" (click)="addToFavourite('',items.CenterID,'',items.TestID,'','')"></i>
+                  </td>
+                  <td *ngIf="items.IsNotFavourite" [ngClass]="{'color': items.IsMinimum }">
+                    <i class="fa fa-heart fa-lg" style="color:darkgrey;" (click)="addToFavourite('',items.CenterID,'',items.TestID,'','')"></i>
+                  </td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-group" style="padding-left: 5px;">
+            <h5><i class="fa fa-bookmark" style="color: rgb(62, 33, 226);"></i>&nbsp;Total Price Comparison</h5>
+          </div>
+          <div class="form-group">
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of labComparisonTestSummary" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 500;">
+                  <td [attr.rowspan]="items.stateSpan" *ngIf="items.stateSpan">
+                    <label style="font-size: small;">{{items.TestName}}</label>
+                  </td>
+                  <td [ngClass]="{'color': items.IsMinimum }">
+                    <label style="font-size: small;">{{items.ShortName}}</label>
+                  </td>
+                  <td [ngClass]="{'color': items.IsMinimum }">
+                    <label style="font-size: small;">৳ {{items.Price}}</label>
+                  </td>
+                  <td *ngIf="items.IsFavourite" [ngClass]="{'color': items.IsMinimum }">
+                    <i class="fa fa-heart fa-lg" style="color: red;" (click)="addToFavourite('',items.CenterID,'','','','','')"></i>
+                  </td>
+                  <td *ngIf="items.IsNotFavourite" [ngClass]="{'color': items.IsMinimum }">
+                    <i class="fa fa-heart fa-lg" style="color:darkgrey;" (click)="addToFavourite('',items.CenterID,'','','','','')"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-group" style="padding-left: 5px;">
+            <button id="BtnBackToLabModal" type="button" class="btn btn-warning my-4" (click)="returnToCompareLab()">Return</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modal-form-addvitals" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card bg-secondary shadow border-0 mb-0">
+        
+        <div class="card-body px-lg-6 py-lg-6" id="">
+                <div class="row" style="width: 100%; padding: 5px;">
+                  <h4>Add Vitals</h4>
+                  <div class="form-group" style="width: 100%;">
+                    <div class="form-group">
+                      <ng-select id="VitalID" [items]="allVitals" 
+                        bindLabel="VitalName" 
+                        bindValue="VitalID" 
+                        placeholder="Select Vital..."
+                        [(ngModel)]="vitalselection"
+                        style="width: 100%;display: inline-block;" (change)="onVitalChange(vitalselection)">
+                      </ng-select>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" id="VitalReadingModal" style="width: 100%;text-align: left;padding: 5px;font-size: small;" placeholder="Vital Reading">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" [(ngModel)]="specificVital.MeasurementUnit" id="VitalUnitModal" style="width: 100%;text-align: left;padding: 5px;font-size: small;" placeholder="Vital Unit">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary my-4" (click)="addNewVital(vitalselection)">Save &nbsp; <i class="fa fa-file-text-o"></i></button>
+                    <button #closeModalTag id="BtnCloseAddVitalsModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-labinfo" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="card">
+        
+        <div class="">
+          <div style="background: #e0e0eb; padding: 5px;">
+            
+            <div id="container">
+              <div class="content">
+                  <div class="formElements" style="display:inline-block; ">
+                      <label style="font-size:x-large;font-weight: bold;">{{LabInvestigationName}}</label>
+                  </div>
+              </div>
+          </div>
+          </div>
+          <div>
+            <table datatable [dtTrigger]="dtTrigger" class="row-grid hover">
+              <tbody>
+                <tr *ngFor="let items of labFaqList" style="border: 1px solid #e0e0eb;padding: 5px; font-size: small;font-weight: 700;">
+                  <td>
+                    <div class="content" style="border: 0px solid #e0e0eb;padding: 5px;">
+                      <div class="formElements" style="width: 100%;" (click)="showhidelabinfo(items.Ordering)">
+                        <label style="font-size: small;">{{items.FAQQuestion}}</label><label style="float: right;"><i  id=il{{items.Ordering}} class="fa fa-caret-down"></i></label>
+                      </div>
+                      <div class="formElements" id=divl{{items.Ordering}} style="display:none;">
+                        <label style="font-size: x-small;">{{items.FAQAnswer}}</label>
+                      </div>
+                  </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="collapse">
+              <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+                <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedIndication')">
+                  <label style="font-size: large;">Indication</label><label style="float: right;"><i id="iMedIndication" class="fa fa-caret-down"></i></label>
+                </div>
+                <div class="formElements" id="divMedIndication" style="display:none;">
+                  <label style="font-size: small;">{{Indication}}</label>
+                </div>
+            </div>
+            <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+              <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedPharmacology')">
+                <label style="font-size: large;">Pharmacology</label><label style="float: right;"><i id="iMedPharmacology" class="fa fa-caret-down"></i></label>
+              </div>
+              <div class="formElements" id="divMedPharmacology" style="display:none;">
+                <label style="font-size: small;">{{Pharmacology}}</label>
+              </div>
+          </div>
+  
+          <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+            <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedAdministration')">
+              <label style="font-size: large;">Administration</label><label style="float: right;"><i id="iMedAdministration" class="fa fa-caret-down"></i></label>
+            </div>
+            <div class="formElements" id="divMedAdministration" style="display:none;">
+              <label style="font-size: small;">{{Administration}}</label>
+            </div>
+        </div>
+  
+        <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+          <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedContradication')">
+            <label style="font-size: large;">Contradication</label><label style="float: right;"><i id="iMedContradication" class="fa fa-caret-down"></i></label>
+          </div>
+          <div class="formElements" id="divMedContradication" style="display:none;">
+            <label style="font-size: small;">{{Contradication}}</label>
+          </div>
+      </div>
+  
+      <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+        <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedSideEffects')">
+          <label style="font-size: large;">Side Effects</label><label style="float: right;"><i id="iMedSideEffects" class="fa fa-caret-down"></i></label>
+        </div>
+        <div class="formElements" id="divMedSideEffects" style="display:none;">
+          <label style="font-size: small;">{{SideEffects}}</label>
+        </div>
+    </div>
+  
+    <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+      <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedPrecautionsAndWarnings')">
+        <label style="font-size: large;">Precautions & Warnings</label><label style="float: right;"><i id="iMedPrecautionsAndWarnings" class="fa fa-caret-down"></i></label>
+      </div>
+      <div class="formElements" id="divMedPrecautionsAndWarnings" style="display:none;">
+        <label style="font-size: small;">{{PrecautionsAndWarnings}}</label>
+      </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedPregnancyAndLactation')">
+      <label style="font-size: large;">Pregnancy & Lactation</label><label style="float: right;"><i id="iMedPregnancyAndLactation" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedPregnancyAndLactation" style="display:none;">
+      <label style="font-size: small;">{{PregnancyAndLactation}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedModeOfAction')">
+      <label style="font-size: large;">Mode of Action</label><label style="float: right;"><i id="iMedModeOfAction" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedModeOfAction" style="display:none;">
+      <label style="font-size: small;">{{ModeOfAction}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedInteraction')">
+      <label style="font-size: large;">Interaction</label><label style="float: right;"><i id="iMedInteraction" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedInteraction" style="display:none;">
+      <label style="font-size: small;">{{Interaction}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedOverdoseEffects')">
+      <label style="font-size: large;">Overdose Effects</label><label style="float: right;"><i id="iMedOverdoseEffects" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedOverdoseEffects" style="display:none;">
+      <label style="font-size: small;">{{OverdoseEffects}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedTherapeuticClass')">
+      <label style="font-size: large;">Therapeutic Class</label><label style="float: right;"><i id="iMedTherapeuticClass" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedTherapeuticClass" style="display:none;">
+      <label style="font-size: small;">{{TherapeuticClass}}</label>
+    </div>
+  </div>
+  
+  <div class="content" style="border: 1px solid #e0e0eb;padding: 5px;">
+    <div class="formElements" style="width: 100%;" (click)="showhidemedicineinfo('MedStorageConditions')">
+      <label style="font-size: large;">Storage Conditions</label><label style="float: right;"><i id="iMedStorageConditions" class="fa fa-caret-down"></i></label>
+    </div>
+    <div class="formElements" id="divMedStorageConditions" style="display:none;">
+      <label style="font-size: small;">{{StorageConditions}}</label>
+    </div>
+  </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <button #closeModalTag id="BtnCloseLabInfoModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-form-updatecost" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card border-0 mb-0">
+        <div class="card-header pb-3" style="background-color: #e6e6ff">
+          <div class="text-muted text-center mb-3">
+            <h3 _ngcontent-pmt-c120="" class="h6 font-weight-bold" style="color: darkblue;">Update Data
+            </h3>
+          </div>
+        </div>
+        <div class="card-body px-lg-6 py-lg-6" id="">
+            <div class="row">
+              <div class="form-group" style="width: 100%;">
+                <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                  <li [ngbNavItem]="1">
+                    <a ngbNavLink>Update Cost</a>
+                    <ng-template ngbNavContent>
+                      <div class="form-group" style="width: 100%;">
+                        <select class="form-control" id="CostTypeID" (change)="changeCostType($event)">
+                          <option value="Transport">Transport Cost</option>
+                          <option value="Visit">Visit Fee</option>
+                        </select>
+                      </div>
+                      <div id="divTransport" class="form-group" style="width: 100%;text-align: center;">
+                        <!--<p>&nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtTransportCost',50)"></i> &nbsp; <input type="text" id="txtTransportCost" style="font-size:medium;font-weight: 600;border-radius: 0px;" value={{TransportCost}} /> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtTransportCost',50)"></i> &nbsp; BDT</p>-->
+                      </div>
+                      <div id="divVisit" class="form-group collapse" style="width: 100%;text-align: center;">
+                        <!--<p>&nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtVisitFee',100)"></i> &nbsp; <input type="text" id="txtVisitFee" style="font-size:medium;font-weight: 600;border-radius: 0px;" value={{VisitFee}} /> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtVisitFee',100)"></i> &nbsp; BDT</p>-->
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="2">
+                    <a ngbNavLink>Update Time</a>
+                    <ng-template ngbNavContent>
+                      <div class="form-group" style="width: 100%;">
+                        <select class="form-control" id="TimeTypeID" (change)="changeTimeType($event)">
+                          <option value="Waiting">Waiting Time</option>
+                          <option value="Consulting">Consulting Time</option>
+                        </select>
+                      </div>
+                      <div id="divWaiting" class="form-group" style="width: 100%;text-align: center;">
+                        <!--<p>&nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtWaitingTime',5)"></i> &nbsp; <input type="text" id="txtWaitingTime" style="font-size:medium;font-weight: 600;border-radius: 0px;" value={{WaitingTime}} /> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtWaitingTime',5)"></i> &nbsp; minutes</p>-->
+                      </div>
+                      <div id="divConsulting" class="form-group collapse" style="width: 100%;text-align: center;">
+                        <!--<p>&nbsp; <i style="color: green;vertical-align:middle;" class="fa fa-plus-square fa-2x" (click)="increment('txtConsultingTime',5)"></i> &nbsp; <input type="text" id="txtConsultingTime" value={{ConsultingTime}} style="font-size:medium;font-weight: 600;border-radius: 0px;"/> &nbsp; <i style="color: red;vertical-align:middle;" class="fa fa-minus-square fa-2x" (click)="decrease('txtConsultingTime',5)"></i> &nbsp; minutes</p>-->
+                      </div>
+                    </ng-template>
+                  </li>
+                </ul>
+                
+                <div [ngbNavOutlet]="nav" class="mt-2"></div>
+              </div>
+                
+            </div>
+        </div>
+        <div class="text-center">
+          <!-- <share-buttons [theme]="'material-dark'" [include]="['facebook']" [show]="9" [size]="1" [url]=""
+            [image]="SharedImageFilePath" [autoSetMeta]="true"></share-buttons> -->
+            <button type="button" class="btn btn-primary my-4" (click)="updateUserInput()">Save &nbsp; <i class="fa fa-file-edit"></i></button>
+            <button #closeModalTag id="BtnCloseUserInputModal" type="button" class="btn btn-danger my-4" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

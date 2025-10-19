@@ -1,0 +1,38 @@
+export class MedicineInfo{
+    ProductID:string;
+    ProductName:string;
+    UnitCost:string;
+    Indication:string;
+    Pharmacology:string;
+    DoseDescription:string;
+    Administration:string;
+    Contradication:string;
+    SideEffects:string;
+    PrecautionsAndWarnings:string;
+    PregnancyAndLactation:string;
+    ModeOfAction:string;
+    Interaction:string;
+    OverdoseEffects:string;
+    TherapeuticClass:string;
+    StorageConditions:string;
+    UnitQuantity:string;
+    Unit:string;
+    PackType:string;
+    PackSize:string;
+    DARNo:string;
+    Strength:string;
+    CategoryID:string;
+    Category:string;
+    GenericID:string;
+    Generic:string;
+    ManufacturerID:string;
+    Manufacturer:string;
+    Price:string;
+    IsCheaper: boolean;
+    IsCostlier: boolean;
+    IsSame: boolean;
+    CostDifference: string;
+    FAQQuestion: string;
+    FAQAnswer: string;
+    Ordering: string;
+}

@@ -1,0 +1,64 @@
+<div class="card-header pb-2" style="background-color: #b3b3ff;">
+    <div class="text-muted text-center mb-3">
+      <h3 class="h4 font-weight-bold">Upload your prescription</h3>                 
+    </div>    
+  </div>
+  <div class="card-body px-lg-5 py-lg-5">
+    <form role="form">
+      <div class="row">
+        <!-- <div class="col-sm-1 col-1">
+          <div class="form-group"> 
+            <strong class="text-warning">*</strong>      
+         </div>
+        </div>    -->
+        <div class="col-sm-4 col-4" *ngIf="mobile">
+          <div class="form-group">
+            <button type="button" class="btn btn-info" (click)="triggerSnapshot();">Take Photo</button>
+          </div>
+        </div>
+        <div class="col-sm-8 col-8" *ngIf="this.IsUploadFileFromDisk">
+          <img [src]=PhotoFilePath class="img-fluid rounded shadow collapse" height="150px" width="100px" />
+          <input class="form-control form-control-lg" type="file" (change)="uploadPhoto($event)" style="margin-top: 0px;" />
+        </div>
+        <div class="col-sm-6 col-6" *ngIf="!this.IsUploadFileFromDisk">
+          <webcam [height]="150" [width]="100" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"></webcam>
+
+          <div class="snapshot" *ngIf="webcamImage">
+            <img [src]="webcamImage.imageAsDataUrl" [height]="80" [width]="100" />
+          </div>
+        </div>
+
+        <div>
+          <input type="hidden" [(ngModel)]="UniqueFileId" name="UniqueFileId">
+          <input type="hidden" [(ngModel)]="UniqueFileName" name="UniqueFileName">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-8 col-8">
+        <div class="form-group">
+          <input class="form-control" placeholder="Caption" type="text"  [(ngModel)]="Caption" name="Caption">
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-12">
+        <div class="form-group">
+          &nbsp;<button type="button" class="btn btn-primary my-4" (click)="uploadPrescription()">Upload File</button>
+        </div>
+      </div>
+      </div>
+
+    </form>
+    <div class="alert alert-info alert-dismissible fade show" style="font-size: small; padding: 1rem 1rem 1rem 1rem;" role="alert">
+      <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
+      <span class="alert-inner--text"><strong>Info!</strong> You've {{PendingData}} uploaded files. Please <a [routerLink]="['/register']">
+        <span class="nav-link-inner--text" style="font-size: 0.7rem;">Sign Up</span>     
+      </a> to view files. You can also <a [routerLink]="" (click)="onGoogleSignUp()">
+        <span class="nav-link-inner--text" style="font-size: 0.7rem;">Sign Up Using Google.</span>     
+      </a></span>
+    </div>
+  </div>

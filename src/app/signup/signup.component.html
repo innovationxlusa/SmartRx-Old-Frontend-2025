@@ -1,0 +1,170 @@
+<main>
+  <section class="section section-shaped section-lg">
+    <!-- <div class="shape shape-style-1 bg-gradient-default"> -->
+      <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">        
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-white">
+              <div class="text-muted text-center text-success mb-3">
+                <small>Sign up</small>
+              </div>
+             <!-- <div class="text-center">
+                <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/Facebook_icon_2013.svg.png">
+                  </span>
+                  <span class="btn-inner--text">facebook</span>
+                </a>
+                <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/google.svg">
+                  </span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div> -->
+            </div>
+            <div class="card-body px-lg-3 py-lg-3">
+             <!-- <div class="text-center text-muted mb-4">
+                <small>Or sign up with credentials</small>
+              </div> -->
+              <form role="form">
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input class="form-control" [(ngModel)]="UserFullName" name="UserFullName" placeholder="Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                    <strong class="text-warning">*</strong>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">                    
+                      <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                    </div>                      
+                    <input class="form-control" [(ngModel)]="MobileNo" name="MobileNo" placeholder="Mobile No." type="text" (focus)="focus1=true" (blur)="focus1=false">
+                    <strong class="text-warning">*</strong>
+                  </div>
+                </div>
+                <!-- <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" [(ngModel)]="Password" name="Password" placeholder="Password" type="password" (focus)="focus2=true" (blur)="focus2=false">
+                  </div>
+                </div> -->
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                    </div>
+                    <select class="form-control" [(ngModel)]="Gender" name="Gender" id="Gender">
+                      <option value="" selected="selected">--Select Gender--</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Others">Others</option>
+                    </select>
+                    <strong class="text-warning">*</strong>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    </div>
+                    <select class="form-control" [(ngModel)]="MonthOfBirth" name="MonthOfBirth" id="MonthOfBirth">
+                      <option value="" selected="selected">--Select Month--</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                    <input class="form-control text-right" [(ngModel)]="YearOfBirth" name="YearOfBirth" placeholder=" Year of Birth" type="text" (focus)="focus2=true" (blur)="focus2=false">                    
+                  </div>
+                </div>
+                <!-- <div class="text-muted font-italic">
+                  <small>password strength:
+                    <span class="text-success font-weight-700">strong</span>
+                  </small>
+                </div> -->
+                <div class="row my-4">
+                  <div class="col-12">
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                      <label class="custom-control-label" for="customCheckRegister">
+                        <span>I agree with the
+                          <a href="javascript:void(0)">Privacy Policy</a>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="button" (click)="signUpUser()" class="btn btn-primary mt-4">Create account</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="col-md-4">
+              <!-- <button type="button" class="btn btn-block btn-default mb-3" data-toggle="modal" data-target="#modal-form" (click)="openModal(true)">Form</button> -->
+              <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true" style="display: none;" [ngStyle]="{'display': mdlSampleIsOpen ? 'block' : 'none', 'opacity': 1}">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body p-0">
+                      <div class="card bg-secondary shadow border-0 mb-0">
+                        <div class="card-header bg-white pb-3">
+                          <div class="text-muted text-center mb-3">
+                            <h4>A verification code has been sent to your mobile. Please enter the code below.</h4>
+                          </div>                         
+                        </div>
+                        <div class="card-body px-lg-5 py-lg-5">                          
+                          <form role="form">                           
+                            <div class="form-group">
+                              <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="OTP" type="password" [(ngModel)]="Password" id="Password" name="Password">
+                              </div>
+                            </div>                           
+                            <div class="text-center">
+                              <button type="button" class="btn btn-primary my-4" (click)="submitOTP()">Submit</button>
+                              <button #closeModal type="button" class="btn btn-danger my-4 collapse" data-dismiss="modal"
+                              >Cancel</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
